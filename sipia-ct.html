@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Blog Sipia-CT</title>
+    <meta name="description" content="Portal do Conselho Tutelar - Protegendo os direitos das crianças e adolescentes.">
+    <meta name="keywords" content="Conselho Tutelar, ECA, direitos das crianças, proteção infantil">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner-topo">Blog Sipia-CT</div>
+        <nav class="menu" style="justify-content: center;">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul style="align-items: flex-end;">
+                <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
+                <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
+                <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
+                <li><a href="estatuto-crianca-adolescente.html" title="ECA">📖<span class="menu-label">ECA</span></a></li>
+                <li><a href="sipia-ct.html" title="Sipia-CT">💻<span class="menu-label">Sipia-CT</span></a></li>
+                <li><a href="faq.html" title="FAQ">❓<span class="menu-label">FAQ</span></a></li>
+                <li><a href="denuncias.html" title="Denúncias">🚨<span class="menu-label">Denúncias</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="card">
+            <h1>O que é o Conselho Tutelar?</h1>
+            <p>O Conselho Tutelar é um órgão essencial para a proteção dos direitos das crianças e adolescentes no Brasil. Ele atua em situações de risco, garantindo que os direitos previstos no Estatuto da Criança e do Adolescente (ECA) sejam respeitados.</p>
+        </section>
+        <section class="card">
+            <h2>O que é o Sipia-CT?</h2>
+            <p>O <strong>Sistema de Informação para a Infância e Adolescência – Conselho Tutelar (Sipia-CT)</strong> é uma ferramenta nacional que registra e organiza informações relacionadas à garantia e defesa dos direitos fundamentais das crianças e adolescentes. Ele é um suporte essencial para o trabalho dos Conselhos Tutelares em todo o país.</p>
+        </section>
+        <section class="card">
+            <h2>Quem pode utilizar o Sipia-CT?</h2>
+            <p>O Sipia-CT é destinado a profissionais que atuam diretamente na proteção dos direitos das crianças e adolescentes, como:</p>
+            <ul>
+                <li>Conselheiros tutelares</li>
+                <li>Assistentes administrativos dos Conselhos Tutelares</li>
+                <li>Conselhos de direitos</li>
+                <li>Outros operadores do sistema de garantia de direitos</li>
+            </ul>
+        </section>
+        <section class="card">
+            <h2>Como acessar o Sipia-CT?</h2>
+            <p>Para acessar o sistema, siga os passos abaixo:</p>
+            <ol>
+                <li>Acesse o <strong>Sistema Nacional de Direitos Humanos (SNDH)</strong>.</li>
+                <li>Preencha o formulário de solicitação de acesso.</li>
+                <li>Aguarde a análise da solicitação e o envio da senha provisória por e-mail.</li>
+                <li>Faça login no sistema utilizando seu CPF e a senha recebida.</li>
+            </ol>
+        </section>
+    </main>
+
+    <div class="floating-button">
+        <button onclick="showInfo()" class="info-button">❓</button>
+        <button onclick="scrollToTop()" class="top-button">⬆️</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Blog Sipia-CT - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+        function showInfo() {
+            alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan e William.');
+        }
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Conselho Tutelar</title>
+    <meta name="description" content="Portal do Conselho Tutelar - Protegendo os direitos das crianças e adolescentes.">
+    <meta name="keywords" content="Conselho Tutelar, ECA, direitos das crianças, proteção infantil">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="banner-topo">Conselho Tutelar - Protegendo Direitos</div>
+        <nav class="menu" style="justify-content: center;">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul style="align-items: flex-end;">
+                <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
+                <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
+                <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
+                <li><a href="estatuto-crianca-adolescente.html" title="ECA">📖<span class="menu-label">ECA</span></a></li>
+                <li><a href="sipia-ct.html" title="Sipia-CT">💻<span class="menu-label">Sipia-CT</span></a></li>
+                <li><a href="faq.html" title="FAQ">❓<span class="menu-label">FAQ</span></a></li>
+                <li><a href="denuncias.html" title="Denúncias">🚨<span class="menu-label">Denúncias</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="introducao card">
+            <h1>Bem-vindo ao Portal do Conselho Tutelar</h1>
+            <p>Este portal foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan e William. Nosso objetivo é informar e conscientizar sobre os direitos das crianças e adolescentes, com base em fontes confiáveis como o site do GOV.br e a Prefeitura de Blumenau.</p>
+            <p>Explore o site para aprender mais sobre o Conselho Tutelar, os direitos das crianças e como entrar em contato com os conselhos tutelares da sua região.</p>
+        </section>
+        <section class="apresentacao card"> 
+            <h2>Moderadores do Portal</h2>
+            <div class="container-perfis">
+                <div class="perfil">
+                    <a href="ivan-profile.html" title="Perfil de Ivan">
+                        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/20003616-icone-de-de-perfil-vetor.jpg" alt="Foto de Ivan" class="foto-perfil">
+                    </a>
+                    <h3>Ivan M. I. - Moderador</h3>
+                    <p><strong>Telefone:</strong> Não informado</p>
+                    <p>Estudante de Análise e Desenvolvimento de Sistemas na Uniasselvi, dedicado a promover a inclusão e a cidadania através da tecnologia.</p>
+                </div>
+                <div class="perfil">
+                    <a href="william-profile.html" title="Perfil de William">
+                        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/20003616-icone-de-de-perfil-vetor.jpg" alt="Foto de William" class="foto-perfil">
+                    </a>
+                    <h3>William - Moderador</h3>
+                    <p><strong>Telefone:</strong> Não informado</p>
+                    <p>Estudante de Tecnologia da Informação na Uniasselvi, dedicado a promover a inclusão e a cidadania através da tecnologia.</p>
+                </div>
+                <div class="perfil">
+                    <a href="#" title="Perfil de Gabriel Pessoa">
+                        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/20003616-icone-de-de-perfil-vetor.jpg" alt="Foto de Gabriel Pessoa" class="foto-perfil">
+                    </a>
+                    <h3>Gabriel Pessoa - Moderador</h3>
+                    <p><strong>Telefone:</strong> Não informado</p>
+                    <p>Estudante e colaborador do portal, comprometido com a proteção dos direitos das crianças e adolescentes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="floating-button">
+        <button onclick="showInfo()" class="info-button">❓</button>
+        <button onclick="scrollToTop()" class="top-button">⬆️</button>
+    </div>
+    <footer>
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+        function showInfo() {
+            alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan e William.');
+        }
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

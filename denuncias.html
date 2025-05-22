@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncias - Conselho Tutelar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="banner-topo">Denúncias</div>
+        <nav class="menu" style="justify-content: center;">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul style="align-items: flex-end;">
+                <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
+                <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
+                <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
+                <li><a href="estatuto-crianca-adolescente.html" title="ECA">📖<span class="menu-label">ECA</span></a></li>
+                <li><a href="sipia-ct.html" title="Sipia-CT">💻<span class="menu-label">Sipia-CT</span></a></li>
+                <li><a href="faq.html" title="FAQ">❓<span class="menu-label">FAQ</span></a></li>
+                <li><a href="denuncias.html" title="Denúncias" class="active">🚨<span class="menu-label">Denúncias</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="card">
+            <h1>Faça sua Denúncia</h1>
+            <p>Você pode denunciar situações de risco, violência ou violação de direitos de crianças e adolescentes. Utilize um dos canais abaixo:</p>
+            <ul>
+                <li><strong>Disque 100:</strong> <a href="tel:100" class="botao-info">Ligar agora</a></li>
+                <li><strong>Conselho Tutelar Blumenau:</strong> <a href="tel:33816661" class="botao-info">Ligar (3381-6661)</a></li>
+                <li><strong>E-mail Conselho Tutelar:</strong> <a href="mailto:conselhotutelar@blumenau.sc.gov.br?subject=Denúncia%20anônima%20portal&body=Descreva%20a%20situação%20de%20risco%20ou%20violação%20de%20direitos%20aqui." class="botao-info">Enviar E-mail</a></li>
+            </ul>
+            <h2>Formulário de Denúncia</h2>
+            <form action="mailto:conselhotutelar@blumenau.sc.gov.br" method="POST" enctype="text/plain">
+                <label for="nome">Nome (opcional):</label><br>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome"><br><br>
+                <label for="contato">Telefone/E-mail para contato (opcional):</label><br>
+                <input type="text" id="contato" name="contato" placeholder="Telefone ou e-mail"><br><br>
+                <label for="mensagem">Mensagem da denúncia:</label><br>
+                <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva a situação..."></textarea><br><br>
+                <button type="submit" class="botao-info">Enviar denúncia por e-mail</button>
+            </form>
+            <p style="margin-top:16px; font-size:0.95em; color:#555;">Ao clicar em enviar, seu aplicativo de e-mail será aberto para finalizar o envio. Para denúncias anônimas, deixe os campos de identificação em branco.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

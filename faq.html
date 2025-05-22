@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Perguntas Frequentes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="banner-topo">Perguntas Frequentes (FAQ)</div>
+        <nav class="menu" style="justify-content: center;">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul style="align-items: flex-end;">
+                <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
+                <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
+                <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
+                <li><a href="estatuto-crianca-adolescente.html" title="ECA">📖<span class="menu-label">ECA</span></a></li>
+                <li><a href="sipia-ct.html" title="Sipia-CT">💻<span class="menu-label">Sipia-CT</span></a></li>
+                <li><a href="faq.html" title="FAQ" class="active">❓<span class="menu-label">FAQ</span></a></li>
+                <li><a href="denuncias.html" title="Denúncias">🚨<span class="menu-label">Denúncias</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="card">
+            <h1>Perguntas Frequentes</h1>
+            <h2>O que é o Conselho Tutelar?</h2>
+            <p>É um órgão autônomo responsável por zelar pelo cumprimento dos direitos das crianças e adolescentes, conforme o ECA.</p>
+            <h2>Como posso fazer uma denúncia?</h2>
+            <p>Você pode usar a página <a href="denuncias.html">Denúncias</a> deste portal, ligar para o Disque 100 ou procurar o Conselho Tutelar mais próximo.</p>
+            <h2>Quais situações devo denunciar?</h2>
+            <p>Qualquer situação de risco, violência, negligência, abuso, exploração ou violação de direitos de crianças e adolescentes.</p>
+            <h2>O que acontece após uma denúncia?</h2>
+            <p>O Conselho Tutelar irá apurar os fatos, tomar providências e encaminhar para os órgãos competentes, se necessário.</p>
+            <h2>Posso denunciar anonimamente?</h2>
+            <p>Sim, denúncias podem ser feitas de forma anônima pelo Disque 100 ou pelo portal.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

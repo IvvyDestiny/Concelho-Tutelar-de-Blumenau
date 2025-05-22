@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conselho Tutelar - Protegendo Direitos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="banner-topo">Conselho Tutelar - Protegendo Direitos</div>
+        <nav class="menu">
+            <div class="menu-burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre-CT.html">Sobre o Conselho Tutelar</a></li>
+                <li><a href="direitos.html">Direitos das Crianças</a></li>
+                <li><a href="contatos.html">Contatos e Recursos</a></li>
+                <li><a href="estatuto-crianca-adolescente.html">ECA</a></li>
+                <li><a href="sipia-ct.html">Sipia-CT</a></li>
+                <li><a href="faq.html">Perguntas Frequentes</a></li>
+                <li><a href="denuncias.html">Denúncias</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+        .menu {
+            background: #0044cc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .menu ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li {
+            margin: 0 15px;
+        }
+        .menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 18px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .menu ul li a:hover, .menu ul li a.active {
+            background: #002a80;
+        }
+        .menu-burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .menu-burger div {
+            width: 28px;
+            height: 4px;
+            background: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+        @media (max-width: 800px) {
+            .menu ul {
+                display: none;
+                flex-direction: column;
+                background: #0044cc;
+                position: absolute;
+                width: 90vw;
+                left: 5vw;
+                top: 60px;
+                z-index: 1000;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+            .menu ul.active {
+                display: flex;
+            }
+            .menu-burger {
+                display: flex;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu ul');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: nowrap; margin-top: 20px;"></div>
+        <div class="contact" style="flex: 1; min-width: 300px; max-width: 400px; padding: 20px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <h2>Ivan M. I</h2> 
+            <p><strong>Telefone:</strong> +55 047 98486-3051</p>
+            <p><strong>Horário não comercial:</strong> Responderemos assim que possível.</p>
+        </div>
+        <div class="contact" style="flex: 1; min-width: 300px; max-width: 400px; padding: 20px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <h2>William</h2>
+            <p><strong>Telefone:</strong> +55 047 91234-6789</p>
+            <p><strong>Horário não comercial:</strong> Responderemos assim que possível.</p>
+        </div>
+    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - Conselhos Tutelares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .contact {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact h2 {
+            margin: 0;
+            color: #555;
+        }
+        .contact p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contatos - Conselhos Tutelares</h1>
+
+    <div class="contact">
+        <h2>Conselho Tutelar I</h2>
+        <p><strong>Telefone:</strong> 3381-6661</p>
+        <p><strong>Abrangência:</strong> Boa Vista, Bom Retiro, Centro, Garcia, Glória, Itoupava Seca, Jardim Blumenau, Ponta Aguda, Progresso, Ribeirão Fresco, Valparaíso, Vila Formosa, Vila Nova, Victor Konder e Vorstardt.</p>
+    </div>
+
+    <div class="contact">
+        <h2>Conselho Tutelar II</h2>
+        <p><strong>Telefone:</strong> 3381-6613</p>
+        <p><strong>Abrangência:</strong> Água Verde, Badenfurt, Do Salto, Escola Agrícola, Passo Manso, Salto do Norte, Salto Weissbach, Velha, Velha Central e Velha Grande.</p>
+    </div>
+
+    <div class="contact">
+        <h2>Conselho Tutelar III</h2>
+        <p><strong>Telefone:</strong> 3381-6612</p>
+        <p><strong>Abrangência:</strong> Fortaleza, Fortaleza Alta, Fidélis, Itoupava Central, Itoupava Norte, Itoupavazinha, Nova Esperança, Testo Salto, Tribess e Vila Itoupava.</p>
+    </div>
+
+    <footer style="text-align: center; padding: 10px; background-color: #0044cc; color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>
