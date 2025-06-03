@@ -7,51 +7,6 @@
     <meta name="description" content="Portal do Conselho Tutelar - Protegendo os direitos das crianças e adolescentes.">
     <meta name="keywords" content="Conselho Tutelar, ECA, direitos das crianças, proteção infantil">
     <link rel="stylesheet" href="style.css">
-    <style>
-        @media (max-width: 800px) {
-            .menu ul {
-                display: none;
-                flex-direction: column;
-                background: #0044cc;
-                position: absolute;
-                width: 90vw;
-                left: 5vw;
-                top: 60px;
-                z-index: 1000;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            }
-            .menu ul.active {
-                display: flex;
-            }
-            .menu-burger {
-                display: flex;
-            }
-        }
-        .menu-burger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            margin: 10px;
-        }
-        .menu-burger div {
-            width: 28px;
-            height: 4px;
-            background: #fff;
-            margin: 4px 0;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-        .menu-burger.active div:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .menu-burger.active div:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-burger.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -122,9 +77,7 @@
     <script>
         function toggleMenu() {
             const menu = document.querySelector('.menu ul');
-            const burger = document.querySelector('.menu-burger');
             menu.classList.toggle('active');
-            burger.classList.toggle('active');
         }
 
         function showInfo() {

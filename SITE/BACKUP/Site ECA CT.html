@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direitos das Crianças</title>
+    <title>Conselho Tutelar - Protegendo Direitos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="banner-topo">Direitos das Crianças</div>
+        <div class="banner-topo">Conselho Tutelar - Protegendo Direitos</div>
         <nav class="menu" style="justify-content: center;">
             <div class="menu-burger" onclick="toggleMenu()">
                 <div></div>
@@ -28,15 +28,15 @@
     </header>
     <main>
         <section class="introducao card">
-            <h1>Direitos das Crianças e Adolescentes</h1>
-            <p>O Estatuto da Criança e do Adolescente (ECA) garante direitos fundamentais para todas as crianças e adolescentes do Brasil. Conheça seus direitos e saiba como protegê-los!</p>
-            <ul>
-                <li>Direito à vida, saúde e alimentação</li>
-                <li>Direito à educação, cultura, esporte e lazer</li>
-                <li>Direito à convivência familiar e comunitária</li>
-                <li>Proteção contra negligência, discriminação, exploração, violência e opressão</li>
-            </ul>
+            <h1>Bem-vindo ao Portal do Conselho Tutelar</h1>
+            <p>Saiba mais sobre os direitos das crianças e adolescentes garantidos pelo Estatuto da Criança e do Adolescente (ECA).</p>
+            <p>Conheça como funciona o Conselho Tutelar e como ele protege os direitos dos jovens.</p>
+            <a href="direitos.html" class="botao-info">Conheça Seus Direitos</a>
         </section>
+        <aside class="banner-lateral card">
+            <h2>Campanhas Atuais</h2>
+            <img src="https://www.blumenau.sc.gov.br/view/media/large/34e95c2db208f5335b60333873c5a83e.jpg" alt="Campanha de Proteção Infantil">
+        </aside>
     </main>
     <div class="floating-button">
         <button onclick="showInfo()" class="info-button">❓</button>
@@ -51,14 +51,11 @@
             menu.classList.toggle('active');
         }
 function showInfo() {
-            alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan, GP e William.');
-        }
+    alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan, GP e William.');
+}
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
 </html>
-
-
-
