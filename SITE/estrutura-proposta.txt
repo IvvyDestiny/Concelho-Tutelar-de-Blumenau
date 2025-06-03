@@ -1,7 +1,7 @@
 // Estrutura de diretórios sugerida para o projeto web
 //
 // SITE/
-// ├── public/           # Arquivos estáticos (HTML, imagens, favicon, etc)
+// ├── SITE/             # Arquivos estáticos (HTML, imagens, favicon, etc)
 // │   ├── index.html
 // │   ├── Contatos.html
 // │   ├── sobre-CT.html
