@@ -24,12 +24,9 @@
             .menu ul.active {
                 display: flex;
             }
-            .menu-burger {
-                display: flex;
-            }
         }
         .menu-burger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
             margin: 10px;
@@ -50,6 +47,11 @@
         }
         .menu-burger.active div:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
+        }
+        @media (min-width: 801px) {
+            .menu-burger {
+                display: none;
+            }
         }
     </style>
 </head>
