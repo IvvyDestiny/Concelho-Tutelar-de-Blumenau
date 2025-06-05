@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estatuto da Criança e do Adolescente</title>
     <link rel="stylesheet" href="style.css">
+    <script src="menu.js" defer></script>
 </head>
 <body>
     <header>
         <div class="banner-topo">Estatuto da Criança e do Adolescente</div>
-        <nav class="menu" style="justify-content: center;">
-            <div class="menu-burger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <ul style="align-items: flex-end;">
+        <nav class="menu">
+            <button class="menu-burger" onclick="toggleMenu()" aria-label="Abrir menu">
+                <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect y="6" width="32" height="4" rx="2" fill="currentColor"/><rect y="14" width="32" height="4" rx="2" fill="currentColor"/><rect y="22" width="32" height="4" rx="2" fill="currentColor"/></svg>
+            </button>
+            <ul>
                 <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
                 <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
                 <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
@@ -31,6 +30,16 @@
             <h1>O que é o Estatuto da Criança e do Adolescente (ECA)?</h1>
             <p>O Estatuto da Criança e do Adolescente (ECA), instituído pela Lei nº 8.069 de 1990, é um marco legal no Brasil que assegura os direitos fundamentais das crianças e adolescentes. Ele estabelece diretrizes para garantir proteção integral e prioridade absoluta em todas as esferas da sociedade.</p>
             <p>O ECA é uma referência essencial para a proteção dos direitos das crianças e adolescentes, abrangendo áreas como educação, saúde, convivência familiar e comunitária, e medidas de proteção em situações de risco.</p>
+            <div class="links-eca" style="margin-top:24px;">
+                <h2>Links Relevantes sobre o ECA</h2>
+                <ul style="list-style: disc inside; padding-left: 0;">
+                    <li><a href="https://www.gov.br/mdh/pt-br/navegue-por-temas/crianca-e-adolescente/estatuto-da-crianca-e-do-adolescente" target="_blank" rel="noopener">ECA no Portal do Governo Federal</a></li>
+                    <li><a href="https://www.planalto.gov.br/ccivil_03/leis/l8069.htm" target="_blank" rel="noopener">Texto Integral da Lei nº 8.069/1990 (ECA) - Planalto</a></li>
+                    <li><a href="https://www.unicef.org/brazil/eca" target="_blank" rel="noopener">ECA e Direitos das Crianças - UNICEF</a></li>
+                    <li><a href="https://www.tjdft.jus.br/institucional/imprensa/campanhas/eca-30-anos" target="_blank" rel="noopener">ECA 30 anos - Tribunal de Justiça do DF</a></li>
+                    <li><a href="https://www.jusbrasil.com.br/artigos/a-importancia-do-eca/2469151541?msockid=229286d1fcd261993aa790d1fdd260a1" target="_blank" rel="noopener">A importância do ECA (Jusbrasil)</a></li>
+                </ul>
+            </div>
         </section>
         <section class="blog-container">
             <div class="blog-card card">
@@ -46,13 +55,24 @@
             <div class="blog-card card">
                 <h3>Benefícios para Famílias</h3>
                 <p>Descubra os benefícios que o governo oferece para apoiar famílias em situação de vulnerabilidade, como o Bolsa Família e o Auxílio Creche.</p>
-                <a href="#beneficios" class="blog-link">Saiba mais</a>
+                <a href="#beneficios" class="blog-link">Saiba mais</a><br>
+                <a href="https://www.jusbrasil.com.br/artigos/a-importancia-do-eca/2469151541?msockid=229286d1fcd261993aa790d1fdd260a1" target="_blank" rel="noopener" class="blog-link">Leia também: A importância do ECA (Jusbrasil)</a>
             </div>
             <div class="blog-card card">
                 <h3>Parcerias com Órgãos Competentes</h3>
                 <p>Saiba como o ECA trabalha em conjunto com o Ministério Público, escolas, unidades de saúde e outros órgãos para garantir a proteção integral das crianças.</p>
                 <a href="#parcerias" class="blog-link">Descubra mais</a>
             </div>
+            <div class="blog-card card">
+                <h3>Campanhas Atuais</h3>
+                <img src="https://www.blumenau.sc.gov.br/view/media/large/34e95c2db208f5335b60333873c5a83e.jpg" alt="Campanha de Proteção Infantil" style="max-width:100%;border-radius:8px;">
+            </div>
+        </section>
+        <section class="introducao card">
+            <h1>Bem-vindo ao Portal do Conselho Tutelar</h1>
+            <p>Saiba mais sobre os direitos das crianças e adolescentes garantidos pelo Estatuto da Criança e do Adolescente (ECA).</p>
+            <p>Conheça como funciona o Conselho Tutelar e como ele protege os direitos dos jovens.</p>
+            <a href="direitos.html" class="botao-info">Conheça Seus Direitos</a>
         </section>
     </main>
     <div class="floating-button">
@@ -60,19 +80,7 @@
         <button onclick="scrollToTop()" class="top-button">⬆️</button>
     </div>
     <footer>
-        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados | v2.0</p>
     </footer>
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu ul');
-            menu.classList.toggle('active');
-        }
-function showInfo() {
-    alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan, GP e William.');
-}
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>

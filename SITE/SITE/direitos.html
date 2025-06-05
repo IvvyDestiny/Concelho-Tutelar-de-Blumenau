@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Direitos das Crianças</title>
     <link rel="stylesheet" href="style.css">
+    <script src="menu.js" defer></script>
 </head>
 <body>
     <header>
         <div class="banner-topo">Direitos das Crianças</div>
-        <nav class="menu" style="justify-content: center;">
-            <div class="menu-burger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <ul style="align-items: flex-end;">
+        <nav class="menu">
+            <button class="menu-burger" onclick="toggleMenu()" aria-label="Abrir menu">
+                <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect y="6" width="32" height="4" rx="2" fill="currentColor"/><rect y="14" width="32" height="4" rx="2" fill="currentColor"/><rect y="22" width="32" height="4" rx="2" fill="currentColor"/></svg>
+            </button>
+            <ul>
                 <li><a href="index.html" title="Início">🏠<span class="menu-label">Início</span></a></li>
                 <li><a href="sobre-CT.html" title="Sobre">👥<span class="menu-label">Sobre</span></a></li>
                 <li><a href="direitos.html" title="Direitos">📜<span class="menu-label">Direitos</span></a></li>
@@ -43,20 +42,8 @@
         <button onclick="scrollToTop()" class="top-button">⬆️</button>
     </div>
     <footer>
-        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados</p>
+        <p>&copy; 2025 Destiny Services BR - Todos os direitos reservados | v2.0</p>
     </footer>
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu ul');
-            menu.classList.toggle('active');
-        }
-function showInfo() {
-            alert('Este site foi criado como parte do projeto de extensão da Uniasselvi pelos alunos Ivan, GP e William.');
-        }
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
 
