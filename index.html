@@ -7,11 +7,11 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/32px-Bandeira_de_Blumenau.svg.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/16px-Bandeira_de_Blumenau.svg.png">
-    <link class="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/180px-Bandeira_de_Blumenau.svg.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/180px-Bandeira_de_Blumenau.svg.png">
     <meta name="msapplication-TileImage" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/270px-Bandeira_de_Blumenau.svg.png">
 
     <meta name="description" content="Telefones de plantão, endereços e canais de denúncia do Conselho Tutelar de Blumenau. Informações oficiais sobre o ECA, SIPIA e suporte à violência doméstica.">
-    <meta name="keywords" content="Conselho Tutelar Blumenau, telefone Conselho Tutelar Blumenau, plantão conselho tutelar blumenau, denunciar violência doméstica blumenau, estatuto da criança e do adolescente SC, delegacia da mulher blumenau, disque 100 eca, sipia ct santa catarina, creas blumenau contatos, proteção menor blumenau, ajuda violência contra mulher sc">
+    <meta name="keywords" content="Conselho Tutelar Blumenau, telefone Conselho Tutelar Blumenau, plantão conselho tutelar blumenau, denunciar violência doméstica blumenau, estatuto da criança e do adolescente SC, delegacia da mulher blumenau, disque 100 eca, sipia ct santa catarina, creas blumenau contatos, proteção criança blumenau, ajuda violência contra mulher sc">
     <meta name="author" content="Ivan Montibeller - DestinyServicesTI">
     <meta name="theme-color" content="#1B365D">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -184,6 +184,7 @@
 
         /* GRID E CARDS MODERNOS */
         .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
         
         .card {
@@ -253,7 +254,7 @@
 
         /* FORMULÁRIO SEGURO */
         form { display: flex; flex-direction: column; gap: 12px; }
-        label { font-weight: 600; color: var(--primary); }
+        label { font-weight: 600; color: var(--primary); font-size: 0.95rem; margin-bottom: -4px; }
         input, textarea, select {
             width: 100%; padding: 12px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1rem;
         }
@@ -353,6 +354,7 @@
             .menu ul.active { display: flex; }
             .menu-burger { display: block; }
             .grid-2 { grid-template-columns: 1fr; }
+            .grid-form { grid-template-columns: 1fr; }
             .profile-container { flex-direction: column; text-align: center; }
         }
     </style>
@@ -384,7 +386,7 @@
         
         <div id="inicio" class="tab-content active">
             <div class="hero-banner">
-                <h1>Rede de Proteção ao Menor e Combate à Violência Doméstica em Blumenau</h1>
+                <h1>Rede de Proteção à Criança e ao Adolescente e Combate à Violência Doméstica em Blumenau</h1>
                 <p>Este portal centraliza ferramentas essenciais e contatos oficiais para garantir a integridade de crianças, adolescentes e famílias de Blumenau. Encontre telefones de plantão do Conselho Tutelar, amparo legal e suporte seguro para denúncias confidenciais.</p>
                 <div class="cta-group">
                     <button class="btn btn-alert" onclick="switchTab('contactos')">
@@ -397,7 +399,7 @@
             <div class="grid-cards">
                 <div class="card">
                     <h3>Estatuto da Criança e do Adolescente (ECA)</h3>
-                    <p>Zelar pelo cumprimento e defesa integral dos direitos das crianças de SC: acesso à educação, saúde e proteção legal ativa contra negligências e abusos.</p>
+                    <p>Zelar pelo cumprimento e defesa integral dos direitos das crianças e dos adolescentes de SC: acesso à educação, saúde e proteção legal ativa contra negligências e abusos.</p>
                     <a href="#" onclick="switchTab('conselho')">Acesse as diretrizes do ECA</a>
                 </div>
                 <div class="card">
@@ -407,7 +409,7 @@
                 </div>
                 <div class="card">
                     <h3>Canais de Emergência Nacionais</h3>
-                    <p>Roteamento direto e imediato para o Disque 100 (Direitos Humanos de Crianças) e Disque 180 (Atendimento de Urgência à Mulher).</p>
+                    <p>Roteamento direto e imediato para o Disque 100 (Denúncias do ECA) e Disque 180 (Atendimento de Urgência à Mulher).</p>
                     <a href="#" onclick="switchTab('contactos')">Ver telefones úteis de SC</a>
                 </div>
             </div>
@@ -445,7 +447,7 @@
                 <ul>
                     <li><strong>Direito à Vida e à Saúde:</strong> Garantia de triagem médica preferencial e atendimento ágil em hospitais e postos de saúde de Blumenau.</li>
                     <li><strong>Direito à Educação e Lazer:</strong> Roteamento compulsório para vagas em creches e escolas da rede municipal próximas à residência da família.</li>
-                    <li><strong>Proteção Integral à Infância:</strong> Atuação combativa e preventiva contra maus-tratos, abandono intelectual, trabalho infantil e abusos de autoridade familiar.</li>
+                    <li><strong>Proteção Integral à Infância e Juventude:</strong> Atuação combativa e preventiva contra maus-tratos, abandono intelectual, trabalho infantil e abusos de autoridade familiar.</li>
                 </ul>
             </div>
         </div>
@@ -460,22 +462,22 @@
                     <div>
                         <strong>Esquema de Classificação de Abusos (Lei Maria da Penha):</strong>
                         <ul style="margin-top: 5px; margin-bottom: 0;">
-                            <li><strong>Violência Física:</strong> Condutas que ofendam a integridade corpórea ou a saúde de mulheres e dependentes menores.</li>
+                            <li><strong>Violência Física:</strong> Condutas que ofendam a integridade corpórea ou a saúde de mulheres e filhos ou dependentes.</li>
                             <li><strong>Violência Psicológica:</strong> Rebaixamento da autoestima através de humilhações constantes, chantagens, perseguições e isolamento social forçado.</li>
                             <li><strong>Violência Patrimonial:</strong> Retenção ilegal, quebra de pertences ou subtração criminosa de documentos, ferramentas de trabalho e salários.</li>
                         </ul>
                     </div>
                 </div>
                 
-                <h3>O Impacto Psicológico nas Crianças e Adolescentes</h3>
-                <p>Menores que testemunham episódios repetitivos de agressões intrafamiliares desenvolvem distúrbios cognitivos severos, mesmo que não sofram o impacto físico direto. Nestas conjunturas, o Conselho Tutelar atua em rede compartilhada com o CREAS, psicólogos comunitários e com a Delegacia de Proteção à Criança, ao Adolescente, à Mulher e ao Idoso (DPCAMI) de Blumenau.</p>
+                <h3>O Impacto Psicológico nas Crianças e nos Adolescentes</h3>
+                <p>Crianças e adolescentes que testemunham episódios repetitivos de agressões intrafamiliares desenvolvem distúrbios cognitivos severos, mesmo que não sofram o impacto físico direto. Nestas conjunturas, o Conselho Tutelar atua em rede compartilhada com o CREAS, psicólogos comunitários e com a Delegacia de Proteção à Criança, ao Adolescente, à Mulher e ao Idoso (DPCAMI) de Blumenau.</p>
             </div>
         </div>
 
         <div id="sipia" class="tab-content">
             <div class="card">
                 <h2>O que é o SIPIA-CT e sua Importância em Santa Catarina?</h2>
-                <p>O Sistema de Informação para a Infância e Adolescência (SIPIA) consiste em um software web unificado de nível nacional de extrema relevância estratégica. Ele serve para registrar, cruzar dados e guiar decisões políticas sobre violações contra crianças.</p>
+                <p>O Sistema de Informação para a Infância e Adolescência (SIPIA) consiste em um software web unificado de nível nacional de extrema relevância estratégica. Ele serve para registrar, cruzar dados e guiar decisões políticas sobre violações contra crianças e adolescentes.</p>
                 <p>Em Blumenau, o uso obrigatório do SIPIA-CT assegura que todas as medidas aplicadas pelos conselheiros tutelares sejam perfeitamente monitoradas pelo Ministério Público (MPSC) e pelo Judiciário, gerando relatórios de transparência e eficiência.</p>
             </div>
         </div>
@@ -490,7 +492,7 @@
                     </div>
                     <div>
                         <h4>2. Em que circunstâncias devo ligar para o plantão do Conselho Tutelar?</h4>
-                        <p>Sempre que houver fundada suspeita ou constatação de que menores estão sofrendo violência, abuso sexual, exploração laboral, privação de ensino público obrigatório ou negligência grave de seus responsáveis.</p>
+                        <p>Sempre que houver fundada suspeita ou constatação de que uma criança ou adolescente esteja sofrendo violência, abuso sexual, exploração laboral, privação de ensino público obrigatório ou negligência grave de seus responsáveis.</p>
                     </div>
                 </div>
             </div>
@@ -518,19 +520,19 @@
                     <div style="font-size:0.95rem; display:flex; flex-direction:column; gap:15px; margin-top: 15px;">
                         <div>
                             <strong style="color: var(--primary);">📍 1º Conselho Tutelar de Blumenau (Região 1)</strong>
-                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6611 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9854</p>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6661 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9854</p>
                             <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Bairros Atendidos:</strong> Centro, Asilo, Boa Vista, Bom Retiro, Garcia, Glória, Jardim Blumenau, Ponta Aguda, Progresso, Ribeirão Fresco, Valparaíso, Vila Formosa, Vila Nova e Vorstadt.</p>
                         </div>
                         
                         <div style="border-top: 1px solid #E2E8F0; padding-top: 10px;">
                             <strong style="color: var(--primary);">📍 2º Conselho Tutelar de Blumenau (Região 2)</strong>
-                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6612 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9864</p>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6613 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9864</p>
                             <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Bairros Atendidos:</strong> Água Verde, Do Salto, Escola Agrícola, Passo Manso, Salto Weissbach, Velha, Velha Central e Velha Grande.</p>
                         </div>
                         
                         <div style="border-top: 1px solid #E2E8F0; padding-top: 10px;">
                             <strong style="color: var(--primary);">📍 3º Conselho Tutelar de Blumenau (Região 3)</strong>
-                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6613 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9867</p>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone Fixo:</strong> (47) 3381-6612 | <strong>📱 Celular de Plantão:</strong> (47) 99977-9867</p>
                             <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Bairros Atendidos:</strong> Badenfurt, Fidélis, Fortaleza, Fortaleza Alta, Itoupava Central, Itoupava Norte, Itoupavazinha, Nova Esperança, Testo Salto, Tribess e Vila Itoupava.</p>
                         </div>
                     </div>
@@ -544,27 +546,36 @@
                         <div class="alerta-box">
                             <svg class="icon icon-large" style="color: var(--alert);" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             <div>
-                                <strong>Importante sobre Segurança da Informação:</strong> Este formulário foi projetado para gerar relatórios detalhados com total blindagem local de dados. Nenhuma informação inserida é armazenada em banco de dados ou enviada a servidores de terceiros.
-                                Ao clicar em enviar, o sistema invoca seu próprio gerenciador de e-mail seguro pré-formatando o texto para a central municipal: <strong>conselhotutelar@blumenau.sc.gov.br</strong>.
-                            </div>
+<strong>Importante sobre Segurança da Informação:</strong> Este formulário foi projetado para gerar relatórios detalhados com total blindagem local de dados. Nenhuma informação inserida é armazenada em banco de dados ou enviada a servidores de terceiros. Ao clicar em enviar, o sistema invoca seu próprio gerenciador de e-mail seguro pré-formatando o texto para a central municipal: conselhotutelar@blumenau.sc.gov.br.                            </div>
                         </div>
                         <form id="denunciaForm" onsubmit="handleFormSubmission(event)">
                             <label for="tipo_violencia">Natureza Crítica da Situação</label>
                             <select id="tipo_violencia" required>
                                 <option value="">Selecione a categoria apropriada...</option>
-                                <option value="infantil">Negligência ou Abuso contra Menor / Violação ECA</option>
+                                <option value="infantil">Negligência ou Abuso contra Criança ou Adolescente / Violação ECA</option>
                                 <option value="domestica">Violência Doméstica / Agressão Física e Psicológica</option>
                                 <option value="ambos">Abuso Combinado (Urgência Integrada Infância e Família)</option>
                             </select>
+
+                            <div class="grid-form">
+                                <div>
+                                    <label for="bairro_fato">Bairro do Ocorrido (Blumenau)</label>
+                                    <input type="text" id="bairro_fato" required placeholder="Ex: Velha Central, Centro...">
+                                </div>
+                                <div>
+                                    <label for="referencia_local">Ponto de Referência</label>
+                                    <input type="text" id="referencia_local" placeholder="Ex: Próximo à Escola X...">
+                                </div>
+                            </div>
 
                             <label for="nome">Seu Nome Completo (Mantenha vazio para preservar o Anonimato)</label>
                             <input type="text" id="nome" placeholder="Opcional - Totalmente Seguro">
 
                             <label for="descricao">Descrição Minuciosa dos Fatos Envolvidos</label>
-                            <textarea id="descricao" rows="5" required placeholder="Escreva o endereço do ocorrido, ponto de referência, nomes ou características físicas dos envolvidos e os sinais observados..."></textarea>
+                            <textarea id="descricao" rows="5" required placeholder="Escreva o endereço exato, nomes ou apelidos dos envolvidos, horário aproximado e os sinais de abuso identificados..."></textarea>
 
                             <button type="submit" class="btn btn-alert">
-                                <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Gerar Denúncia via E-mail Seguro
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Gerar Denúncia Integrada para Todos os Conselhos
                             </button>
                         </form>
                     </div>
@@ -636,22 +647,35 @@
             event.preventDefault();
             
             const tipo = document.getElementById('tipo_violencia').value;
-            const nome = document.getElementById('nome').value || "Cidadão Anônimo";
+            const bairro = document.getElementById('bairro_fato').value;
+            const referencia = document.getElementById('referencia_local').value || "Não informada";
+            const nome = document.getElementById('nome').value || "Cidadão Anônimo (Solicitação de Sigilo)";
             const descricao = document.getElementById('descricao').value;
             
-            const emailDestino = "conselhotutelar@blumenau.sc.gov.br";
-            const assunto = `ALERTA INTEGRADO: ${tipo.toUpperCase()} - Blumenau`;
+            // ABORDAGEM MULTI-ENVIO INTEGRADO (Todos os conselhos em cópia simultânea)
+            const emailCentral = "conselhotutelar@blumenau.sc.gov.br";
+            const emailsRegiões = "conselhotutelar1@blumenau.sc.gov.br,conselhotutelar2@blumenau.sc.gov.br,conselhotutelar3@blumenau.sc.gov.br";
             
-            const corpoEmail = `Portal de Proteção Comunitária - Blumenau\n` +
-                               `-----------------------------------------\n` +
-                               `Natureza do Alerta: ${tipo}\n` +
-                               `Remetente: ${nome}\n` +
-                               `Relato dos Fatos:\n${descricao}\n\n` +
-                               `-----------------------------------------\n` +
-                               `Enviado com criptografia local em conformidade de sigilo.`;
+            const destinatariosCompletos = `${emailCentral},${emailsRegiões}`;
+            
+            const assunto = `ALERTA URGENTE (MULTI-REGIONAL): ${tipo.toUpperCase()} - BAIRRO: ${bairro.toUpperCase()}`;
+            
+            const corpoEmail = `PORTAL DE PROTEÇÃO COMUNITÁRIA - BLUMENAU\n` +
+                               `==================================================\n` +
+                               `LOCALIZADOR GEOGRÁFICO DE TRIAGEM:\n` +
+                               `• Bairro do Fato: ${bairro}\n` +
+                               `• Ponto de Referência: ${referencia}\n` +
+                               `==================================================\n` +
+                               `DADOS DO ALERTA:\n` +
+                               `• Natureza da Ocorrência: ${tipo}\n` +
+                               `• Identificação do Remetente: ${nome}\n\n` +
+                               `RELATO DETALHADO DOS FATOS:\n` +
+                               `${descricao}\n\n` +
+                               `--------------------------------------------------\n` +
+                               `Mensagem criptografada e enviada via canal seguro unificado.`;
 
-            alert("Redirecionando. Seu aplicativo local de e-mail seguro será aberto para transmissão.");
-            window.location.href = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+            alert("Disparando envio multi-regional. Seu aplicativo padrão de e-mail seguro será aberto para transmissão simultânea.");
+            window.location.href = `mailto:${destinatariosCompletos}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
         }
 
         function panicExit() {
