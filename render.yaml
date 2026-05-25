@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: conselho-tutelar-blumenau
+    runtime: node
+    plan: free
+    rootDir: SITE
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18
