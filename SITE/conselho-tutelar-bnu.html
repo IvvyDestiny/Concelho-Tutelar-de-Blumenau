@@ -395,7 +395,9 @@
 
     <div class="panic-bar">
         <button onclick="panicExit()" class="btn btn-panic" title="Clique ou pressione ESC para fechar esta página instantaneamente">🚨 Saída Rápida (ESC)</button>
-        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn" style="background:#CBD5E0; color:#2D3748; padding: 10px 15px; border-radius:50%;">⬆️</button>
+        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn" style="background:#CBD5E0; color:#2D3748; width: 45px; height: 45px; border-radius:50%; display: inline-flex; align-items: center; justify-content: center; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" aria-label="Voltar ao topo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
     </div>
 
     <footer>

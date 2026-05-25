@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extensão Universitária: Portal de Impacto Social - Blumenau</title>
+    <style>
+        :root {
+            --primary: #11223C;
+            --secondary: #2E7D32;
+            --accent: #FBC02D;
+            --white: #ffffff;
+            --text: #2D3748;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f0f4f8;
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease-in-out;
+            transform: scale(0.95);
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .uniasselvi-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        h1 { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 25px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        p { font-size: 1.4rem; max-width: 900px; line-height: 1.6; margin-bottom: 20px; }
+
+        .ext-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+            max-width: 1100px;
+        }
+
+        .ext-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--secondary);
+            text-align: left;
+        }
+
+        .ext-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        
+        .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover { background: var(--secondary); transform: translateY(-2px); }
+        
+        .progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 6px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress" id="progress"></div>
+    <div class="uniasselvi-tag">PROJETO DE EXTENSÃO</div>
+
+    <div class="slide-container">
+        <!-- Slide 1: Introdução à Extensão -->
+        <div class="slide active">
+            <h1>A Jornada de Extensão</h1>
+            <h2>Unindo Academia e Sociedade</h2>
+            <p>Relato técnico e social do desenvolvimento do Portal de Proteção Comunitária de Blumenau como ferramenta de intervenção direta na rede de garantia de direitos.</p>
+            <p style="color: var(--secondary); font-weight: bold;">Acadêmico: Ivan Montibeller | Curso: Análise e Desenvolvimento de Sistemas</p>
+        </div>
+
+        <!-- Slide 2: O Diagnóstico -->
+        <div class="slide">
+            <h2>Diagnóstico da Comunidade</h2>
+            <p>Identificamos que a população de Blumenau enfrentava barreiras no acesso rápido a informações do Conselho Tutelar e canais de violência doméstica.</p>
+            <div class="ext-grid">
+                <div class="ext-card">
+                    <h3><svg class="icon"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Problema</h3>
+                    <p>Informações dispersas e falta de canais digitais intuitivos para denúncias não-emergenciais.</p>
+                </div>
+                <div class="ext-card">
+                    <h3><svg class="icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Público-Alvo</h3>
+                    <p>Cidadãos de Blumenau, vítimas de violência doméstica e profissionais da educação.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Aplicação de Conhecimento Técnico -->
+        <div class="slide">
+            <h2>Metodologia e Desenvolvimento</h2>
+            <p>A extensão permitiu aplicar conceitos avançados de Análise e Desenvolvimento de Sistemas para resolver problemas do mundo real.</p>
+            <div class="ext-grid">
+                <div class="ext-card" style="border-top-color: var(--accent);">
+                    <h3>Arquitetura</h3>
+                    <p>Desenvolvimento de um servidor escalável em Node.js com entrega contínua via Render Cloud.</p>
+                </div>
+                <div class="ext-card" style="border-top-color: var(--accent);">
+                    <h3>Acessibilidade</h3>
+                    <p>Design inclusivo e otimização SEO para que qualquer cidadão encontre o portal via Google instantaneamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Inovação Social (Panic Exit) -->
+        <div class="slide">
+            <h2>O Diferencial Humanizado</h2>
+            <p>A extensão exige empatia. Criamos o protocolo <strong>"Saída Rápida" (Panic Exit)</strong>.</p>
+            <div class="ext-card" style="border-top-color: #D32F2F; margin: 0 auto; max-width: 700px;">
+                <h3>Proteção de Dados e Vida</h3>
+                <p>O recurso permite que uma vítima, ao ser surpreendida por um agressor, feche o site e mude o histórico do navegador com um único clique ou tecla (ESC), simulando uma pesquisa comum.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Resultados e Conclusão -->
+        <div class="slide">
+            <h2>Resultados Alcançados</h2>
+            <p>O portal não é apenas um repositório de links, mas um Hub de Proteção Ativa.</p>
+            <div class="ext-grid">
+                <div class="ext-card">
+                    <h3>Social</h3>
+                    <p>Democratização do acesso ao ECA e SIPIA-CT para a comunidade blumenauense.</p>
+                </div>
+                <div class="ext-card">
+                    <h3>Acadêmico</h3>
+                    <p>Consolidação de competências em Full-Stack Development e Governança de Software.</p>
+                </div>
+            </div>
+            <h3 style="margin-top: 30px; color: var(--primary);">Extensão Uniasselvi: Conhecimento que transforma vidas.</h3>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-nav" onclick="changeSlide(-1)">Anterior</button>
+        <button class="btn-nav" onclick="changeSlide(1)">Próximo</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+
+        function updateUI() {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === currentSlide);
+            });
+            const percent = ((currentSlide + 1) / slides.length) * 100;
+            progress.style.width = percent + '%';
+        }
+
+        function changeSlide(dir) {
+            currentSlide = (currentSlide + dir + slides.length) % slides.length;
+            updateUI();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'Escape') window.location.replace("https://www.google.com");
+        });
+
+        updateUI();
+    </script>
+</body>
+</html>
