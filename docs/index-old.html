@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Unificado de Proteção Comunitária - Blumenau</title>
+
+    <meta name="description" content="Portal informativo integrado sobre o Conselho Tutelar, ECA, SIPIA e canais de prevenção contra a Violência Doméstica. Desenvolvido por Ivan Montibeller.">
+    <meta name="keywords" content="Conselho Tutelar, Blumenau, ECA, Proteção à Criança, Violência Doméstica, SIPIA, Denúncia, Santa Catarina">
+    <meta name="author" content="Ivan Montibeller - DestinyServicesTI">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conselhotutelarbnu.onrender.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conselhotutelarbnu.onrender.com/">
+    <meta property="og:title" content="Portal Unificado de Proteção Comunitária - Blumenau">
+    <meta property="og:description" content="Acesse canais de denúncia, informações sobre o ECA e suporte contra violência doméstica em Blumenau.">
+    <meta property="og:image" content="https://conselhotutelarbnu.onrender.com/assets/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portal Unificado de Proteção Comunitária - Blumenau">
+    <meta name="twitter:description" content="Canais de denúncia e informações sobre o Conselho Tutelar em Blumenau.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "Portal Unificado de Proteção Comunitária - Blumenau",
+      "alternateName": "Conselho Tutelar Blumenau",
+      "description": "Portal informativo integrado sobre o Conselho Tutelar, ECA e canais de proteção em Blumenau.",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Conselho Tutelar de Blumenau"
+      },
+      "areaServed": { "@type": "City", "name": "Blumenau" }
+    }
+    </script>
+    
+    <style>
+        /* DESIGN SYSTEM - VARIÁVEIS DE ESTILO */
+        :root {
+            --primary: #1B365D;       /* Azul Institucional / Confiança */
+            --secondary: #2E7D32;     /* Verde Direitos / Acolhimento */
+            --alert: #D32F2F;         /* Vermelho Alerta / Denúncia */
+            --warning: #FBC02D;       /* Amarelo Atenção */
+            --bg-light: #F8F9FA;      /* Fundo Geral */
+            --bg-card: #FFFFFF;       /* Fundo de Blocos */
+            --text-main: #2D3748;     /* Cor de Texto Principal */
+            --text-muted: #5A6A85;    /* Texto Secundário */
+            --radius: 12px;
+            --transition: all 0.25s ease;
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* PADRONIZAÇÃO DE ÍCONES (SVG) */
+        .icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .icon-large { width: 24px; height: 24px; }
+        .icon-small { width: 16px; height: 16px; }
+
+        /* HEADER & TOPO INFORMATIVO */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .banner-topo {
+            background: linear-gradient(135deg, var(--primary), #11223C);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* MENU RESPONSIVO */
+        .menu {
+            background: var(--bg-card);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        .menu-logo {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        .menu ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+        .menu ul li a:hover, .menu ul li a.active {
+            background-color: #EDF2F7;
+            color: var(--primary);
+        }
+        .menu-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* LAYOUT CONTAINER COMPARTILHADO */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: 70vh;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        .tab-content.active { display: block; }
+
+        /* GRID E CARDS MODERNOS */
+        .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        
+        .card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #E2E8F0;
+            margin-bottom: 25px;
+        }
+        h1, h2, h3 { color: var(--primary); margin-bottom: 15px; }
+        p { color: var(--text-main); margin-bottom: 15px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+
+        /* HIGHLIGHT HERO BANNER */
+        .hero-banner {
+            background: linear-gradient(135deg, #EBF8FF, #E2E8F0);
+            border-left: 6px solid var(--primary);
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
+
+        /* BOTÕES FLUTUANTES (DIREITA) */
+        .btn-topo {
+            background: #CBD5E0; 
+            color: #2D3748; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            border: none;
+            cursor: pointer;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 0; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, background 0.2s ease;
+            align-self: flex-end;
+        }
+        .btn-topo:hover {
+            background: #A0AEC0;
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #11223C; transform: translateY(-2px); }
+        .btn-secondary { background: var(--secondary); color: white; }
+        .btn-secondary:hover { background: #1E5322; transform: translateY(-2px); }
+        .btn-alert { background: var(--alert); color: white; }
+        .btn-alert:hover { background: #A31D1D; transform: translateY(-2px); }
+
+        /* FORMULÁRIO SEGURO */
+        form { display: flex; flex-direction: column; gap: 12px; }
+        label { font-weight: 600; color: var(--primary); }
+        input, textarea, select {
+            width: 100%; padding: 12px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-color: var(--primary); outline: none; }
+
+        /* SINALIZADORES DE VIOLÊNCIA DOMÉSTICA */
+        .alerta-box {
+            background-color: #FFF5F5;
+            border: 1px solid #FED7D7;
+            border-left: 5px solid var(--alert);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        /* PERFIL EXCLUSIVO DE DESENVOLVEDOR */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            background: #EDF2F7;
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+        .foto-perfil {
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        .profile-socials { display: flex; gap: 10px; margin-top: 10px; }
+        .profile-socials a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: bold; 
+            color: white;
+            transition: var(--transition);
+        }
+        .profile-socials a:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* BARRA FLUTUANTE DE BOTÕES (DIREITA DA TELA) */
+        .panic-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            z-index: 9999;
+        }
+        .btn-panic {
+            background: var(--alert);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 12 rgba(211, 47, 47, 0.3);
+            animation: pulse 2s infinite;
+            padding: 9px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid #E2E8F0;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            color: var(--text-muted);
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .menu ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background: var(--bg-card);
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+            .menu ul.active { display: flex; }
+            .menu-burger { display: block; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .profile-container { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="banner-topo">Portal Unificado de Apoio à Família e Direitos Humanos</div>
+        <nav class="menu">
+            <div class="menu-logo">
+                <svg class="icon icon-large" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+                Blumenau Segura
+            </div>
+            <button class="menu-burger" onclick="toggleMenu()" aria-label="Abrir menu de navegação">
+                <svg class="icon icon-large" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <ul id="menu-links">
+                <li><a href="#" class="nav-link active" data-tab="inicio"><svg class="icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Início</a></li>
+                <li><a href="#" class="nav-link" data-tab="conselho"><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Conselho e ECA</a></li>
+                <li><a href="#" class="nav-link" data-tab="violencia"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Violência Doméstica</a></li>
+                <li><a href="#" class="nav-link" data-tab="sipia"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" x2="12" y1="17" x2="12" y2="21"/></svg> SIPIA-CT</a></li>
+                <li><a href="#" class="nav-link" data-tab="faq"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQ</a></li>
+                <li><a href="#" class="nav-link" data-tab="contactos"><svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Canais & Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div id="inicio" class="tab-content active">
+            <div class="hero-banner">
+                <h1>Proteção e Suporte para a Nossa Comunidade</h1>
+                <p>Este portal reúne ferramentas essenciais para a salvaguarda de direitos das crianças e adolescentes de Blumenau e mecanismos de apoio, prevenção e acolhimento em casos de violência doméstica. Conhecimento e denúncia salvam vidas.</p>
+                <div class="cta-group">
+                    <button class="btn btn-alert" onclick="switchTab('contactos')">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Preciso de Ajuda / Denunciar
+                    </button>
+                    <button class="btn btn-secondary" onclick="switchTab('violencia')">Saiba Como Identificar Abusos</button>
+                </div>
+            </div>
+            
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>Estatuto da Criança (ECA)</h3>
+                    <p>Zelar pelo cumprimento dos direitos fundamentais: educação, saúde, alimentação e lazer. O Conselho Tutelar é o guardião legal desta engrenagem.</p>
+                    <a href="#" onclick="switchTab('conselho')">Ler mais...</a>
+                </div>
+                <div class="card">
+                    <h3>Prevenção da Violência</h3>
+                    <p>A violência doméstica afeta diretamente o desenvolvimento emocional de menores no lar. Conheça as redes de proteção e a Lei Maria da Penha.</p>
+                    <a href="#" onclick="switchTab('violencia')">Ler mais...</a>
+                </div>
+                <div class="card">
+                    <h3>Canais de Emergência</h3>
+                    <p>Acesso rápido ao Disque 100 (Direitos Humanos) e Disque 180 (Central de Atendimento à Mulher) com roteamento direto.</p>
+                    <a href="#" onclick="switchTab('contactos')">Ver canais locais...</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Desenvolvimento e Governança do Portal</h2>
+                <p>Este sistema de utilidade pública foi planejado e codificado sob rigorosos critérios de acessibilidade frontend, focado na resolução de dores sociais reais no ecossistema de Santa Catarina.</p>
+                <div class="profile-container">
+                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/20003616-icone-de-de-perfil-vetor.jpg" alt="Avatar de perfil de Ivan Montibeller" class="foto-perfil">
+                    <div>
+                        <h4>Ivan Montibeller</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px;">Diretor de Desenvolvimento & Proprietário da DestinyServicesTI</p>
+                        <p style="font-size: 0.85rem; margin: 0;">Responsável técnico direto pela arquitetura de software, conformidade de segurança "Panic Exit" e integração serverless do portal.</p>
+                        <div class="profile-socials">
+                            <a href="mailto:ivan.m301299@outlook.com" style="background:#4A5568;">
+                                <svg class="icon icon-small" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> E-mail
+                            </a>
+                            <a href="https://wa.me/5547984863051" style="background:#2F855A;">
+                                <svg class="icon icon-small" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp
+                            </a>
+                            <a href="https://github.com/IvanM1999" style="background:#1A202C;">
+                                <svg class="icon icon-small" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="conselho" class="tab-content">
+            <div class="card">
+                <h2>O que é o Conselho Tutelar?</h2>
+                <p>É um órgão permanente e autónomo, não jurisdicional, encarregado pela sociedade de zelar pelo cumprimento dos direitos da criança e do adolescente, definidos por lei nacional (ECA).</p>
+                <h3>Direitos Fundamentais Garantidos:</h3>
+                <ul>
+                    <li><strong>Vida e Saúde:</strong> Atendimento prioritário e integral na rede pública de saúde.</li>
+                    <li><strong>Educação e Esporte:</strong> Vagas em creches e escolas próximas à residência familiar.</li>
+                    <li><strong>Proteção:</strong> Salvaguarda total contra qualquer tipo de negligência, exploração, discriminação ou crueldade.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="violencia" class="tab-content">
+            <div class="card">
+                <h2>Enfrentamento à Violência Doméstica</h2>
+                <p>A violência intrafamiliar e doméstica não se resume à agressão física. Reconhecer os primeiros sinais e os diferentes formatos de abuso é o passo vital para interromper o ciclo de violência.</p>
+                
+                <div class="alerta-box">
+                    <svg class="icon icon-large" style="color: var(--alert);" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <div>
+                        <strong>Tipos de Abuso Doméstico:</strong>
+                        <ul style="margin-top: 5px; margin-bottom: 0;">
+                            <li><strong>Violência Fizica:</strong> Ofensa à integridade ou saúde corporal.</li>
+                            <li><strong>Violência Psicológica:</strong> Humilhação, insultos, isolamento, ameaças e controlo de comportamento.</li>
+                            <li><strong>Violência Patrimonial:</strong> Retenção ou destruição de bens, documentos e recursos económicos pessoais.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>O Impacto Silencioso nas Crianças</h3>
+                <p>Menores que crescem em lares onde ocorre violência doméstica sofrem danos psicológicos profundos e severos, mesmo que não sofram a agressão física direta. O Conselho Tutelar atua em parceria com as delegacias de proteção à mulher para garantir que os menores recebam o devido acompanhamento do CREAS e psicólogos especializados.</p>
+            </div>
+        </div>
+
+        <div id="sipia" class="tab-content">
+            <div class="card">
+                <h2>O que é o Sipia-CT?</h2>
+                <p>O Sistema de Informação para a Infância e Adolescência (Sipia) é uma aplicação web nacional criada para subsidiar a adoção de políticas públicas na área. Ele unifica o registo e o acompanhamento de denúncias de violações de direitos em todo o Brasil.</p>
+                <p>Em Blumenau, os conselheiros utilizam o sistema para garantir que as medidas protetivas sejam rastreáveis por assistentes sociais e pelo Ministério Público.</p>
+            </div>
+        </div>
+
+        <div id="faq" class="tab-content">
+            <div class="card">
+                <h2>Perguntas Frequentes (FAQ)</h2>
+                <div style="display:flex; flex-direction:column; gap:15px;">
+                    <div>
+                        <h4>1. A denúncia realizada no portal é anónima?</h4>
+                        <p>Sim. Os canais oficiais de denúncia asseguram sigilo absoluto. Pode optar por não preencher dados de identificação.</p>
+                    </div>
+                    <div>
+                        <h4>2. Quando devo acionar o Conselho Tutelar?</h4>
+                        <p>Sempre que os direitos de uma criança ou adolescente estiverem ameaçados ou violados por omissão da sociedade, do Estado, dos pais ou em razão da conduta do próprio jovem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contactos" class="tab-content">
+            <div>
+                <div class="card" style="border-top: 4px solid var(--alert);">
+                    <h3>Canais Nacionais Rápidos</h3>
+                    <div style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
+                        <a href="#" onclick="fazerChamada('100')" class="btn btn-alert">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Disque 100 (ECA)
+                        </a>
+                        <a href="#" onclick="fazerChamada('180')" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Disque 180 (Mulher)
+                        </a>
+                        <a href="#" onclick="fazerChamada('190')" class="btn btn-secondary">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> PM 190 (Emergências)
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--primary);">
+                    <h3>Conselhos Tutelares em Blumenau (Dados Oficiais)</h3>
+                    <div style="font-size:0.95rem; display:flex; flex-direction:column; gap:15px; margin-top: 15px;">
+                        <div>
+                            <strong style="color: var(--primary);">📍 1º Conselho Tutelar (Região 1)</strong>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone:</strong> (47) 3381-6611 | <strong>📱 Plantão:</strong> (47) 99977-9854</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Abrangência:</strong> Centro, Asilo, Boa Vista, Bom Retiro, Garcia, Glória, Jardim Blumenau, Ponta Aguda, Progresso, Ribeirão Fresco, Valparaíso, Vila Formosa, Vila Nova e Vorstadt.</p>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #E2E8F0; padding-top: 10px;">
+                            <strong style="color: var(--primary);">📍 2º Conselho Tutelar (Região 2)</strong>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone:</strong> (47) 3381-6612 | <strong>📱 Plantão:</strong> (47) 99977-9864</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Abrangência:</strong> Água Verde, Do Salto, Escola Agrícola, Passo Manso, Salto Weissbach, Velha, Velha Central e Velha Grande.</p>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #E2E8F0; padding-top: 10px;">
+                            <strong style="color: var(--primary);">📍 3º Conselho Tutelar (Região 3)</strong>
+                            <p style="margin: 5px 0 2px 0;"><strong>📞 Telefone:</strong> (47) 3381-6613 | <strong>📱 Plantão:</strong> (47) 99977-9867</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Abrangência:</strong> Badenfurt, Fidélis, Fortaleza, Fortaleza Alta, Itoupava Central, Itoupava Norte, Itoupavazinha, Nova Esperança, Testo Salto, Tribess e Vila Itoupava.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <div class="card">
+                        <h2>Formulário de Alerta / Denúncia</h2>
+                        <div class="alerta-box">
+                            <svg class="icon icon-large" style="color: var(--alert);" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <div>
+                                <strong>Importante:</strong> Este formulário é para denúncias que exigem documentação detalhada. Para casos de emergência, utilize os números de telefone acima.
+                                Nosso site apenas divulga serviços, não faz cobranças ou recebe denúncias diretamente. O envio deste formulário abrirá seu cliente de e-mail com um modelo pré-formatado para o Conselho Tutelar, garantindo confidencialidade e segurança.
+                                <br><br>
+                                <strong>Não Coletamos Nada:</strong> O sigilo é garantido pelo conselho tutelar e pelo sistema de e-mail seguro do denunciante. 
+                            </div>
+                        </div>
+                        <form id="denunciaForm" onsubmit="handleFormSubmission(event)">
+                            <label for="tipo_violencia">Natureza da Situação</label>
+                            <select id="tipo_violencia" required>
+                                <option value="">Selecione uma opção...</option>
+                                <option value="infantil">Violação de Direitos da Criança / ECA</option>
+                                <option value="domestica">Violência Doméstica / Intrafamiliar</option>
+                                <option value="ambos">Ambos os Casos (Urgência Integrada)</option>
+                            </select>
+
+                            <label for="nome">Seu Nome (Deixe em branco para Anonimato)</label>
+                            <input type="text" id="nome" placeholder="Opcional">
+
+                            <label for="descricao">Descrição Detalhada dos Factos</label>
+                            <textarea id="descricao" rows="5" required placeholder="Forneça o máximo de detalhes possível (Endereço, nomes, sinais observados)..."></textarea>
+
+                            <button type="submit" class="btn btn-alert">
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Enviar Alerta via E-mail
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="panic-bar">
+        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-topo" aria-label="Voltar ao topo">
+            <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+
+        <button onclick="panicExit()" class="btn btn-panic" title="Clique ou pressione ESC para fechar esta página instantaneamente">
+            <svg class="icon icon-small" style="margin-right: 4px;" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Saída Rápida (ESC)
+        </button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Portal de Impacto Social Blumenau. Conselho Tutelar de Blumenau.</p>
+        <p style="font-size: 0.8rem; margin-top:5px; color:#A0AEC0;">Licença de Uso Exclusivo - DestinyServicesTI.</p>
+    </footer>
+
+    <script>
+        // NAVEGAÇÃO ENTRE ABAS (SPA)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            const targetTab = document.getElementById(tabId);
+            if(targetTab) targetTab.classList.add('active');
+            
+            const targetLink = document.querySelector(`[data-tab="${tabId}"]`);
+            if(targetLink) targetLink.classList.add('active');
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchTab(this.getAttribute('data-tab'));
+                if(window.innerWidth <= 768) toggleMenu(); 
+            });
+        });
+
+        function toggleMenu() {
+            document.getElementById('menu-links').classList.toggle('active');
+        }
+
+        function getDeviceType() {
+            const ua = navigator.userAgent;
+            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return "tablet";
+            if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/i.test(ua)) return "mobile";
+            return "desktop";
+        }
+
+        function fazerChamada(numero) {
+            const device = getDeviceType();
+            if(device === "mobile" || device === "tablet") {
+                window.location.href = `tel:${numero}`;
+            } else {
+                alert(`Para realizar denúncias a partir do seu Computador, utilize o seu telefone e marque o número: ${numero}. A chamada é gratuita.`);
+            }
+        }
+
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            const tipo = document.getElementById('tipo_violencia').value;
+            const nome = document.getElementById('nome').value || "Cidadão Anónimo";
+            const descricao = document.getElementById('descricao').value;
+            
+            const emailDestino = "conselhotutelar@blumenau.sc.gov.br";
+            const assunto = `ALERTA INTEGRADO: ${tipo.toUpperCase()} - Blumenau`;
+            
+            const corpoEmail = `Portal de Proteção Comunitária - Blumenau\n` +
+                               `-----------------------------------------\n` +
+                               `Natureza: ${tipo}\n` +
+                               `Remetente: ${nome}\n` +
+                               `Relato dos Factos:\n${descricao}\n\n` +
+                               `-----------------------------------------\n` +
+                               `Enviado de forma confidencial.`;
+
+            alert("A processar a sua denúncia. O seu cliente de e-mail seguro será aberto de seguida.");
+            window.location.href = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+        }
+
+        function panicExit() {
+            window.location.replace("https://www.google.com/m?q=previsao+do+tempo");
+        }
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                panicExit();
+            }
+        });
+    </script>
+</body>
+</html>
