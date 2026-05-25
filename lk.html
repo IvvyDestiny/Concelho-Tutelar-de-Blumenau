@@ -87,7 +87,14 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
+        .icon { 
+            width: 24px; 
+            height: 24px; 
+            stroke: currentColor; 
+            stroke-width: 2; 
+            fill: none; 
+            flex-shrink: 0; /* Evita distorção em telas pequenas */
+        }
 
         .footer {
             margin-top: 40px;
@@ -107,6 +114,7 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             opacity: 0.8;
             transition: 0.3s;
@@ -134,58 +142,56 @@
     <div class="container">
         <div class="profile">
             <div class="profile-icon">
-                <svg class="icon" style="width:40px; height:40px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+                <svg class="icon" viewBox="0 0 24 24" style="width:40px; height:40px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
             </div>
             <h1>Portal de Proteção Blumenau</h1>
             <p>Ivan Montibeller | ADS Uniasselvi</p>
         </div>
 
         <div class="links-group">
-            <!-- Página 1: Links Principais -->
             <div id="page1" class="page active">
                 <a href="https://conselhotutelarbnu.onrender.com" class="link-card" target="_blank">
                     <span> Portal Oficial (Live)</span>
-                    <svg class="icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
 
                 <a href="apresentacao.html" class="link-card">
                     <span> Apresentação do Sistema</span>
-                    <svg class="icon"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" x2="12" y1="17" x2="12" y2="21"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" x2="12" y1="17" x2="12" y2="21"/></svg>
                 </a>
 
                 <a href="ext.html" class="link-card">
                     <span> Jornada de Extensão</span>
-                    <svg class="icon"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
                 </a>
 
                 <a href="https://github.com/IvanM1999" class="link-card" target="_blank">
                     <span> Repositório GitHub</span>
-                    <svg class="icon"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 </a>
                 <button class="nav-btn" onclick="togglePage()">Próxima Página ➡</button>
             </div>
 
-            <!-- Página 2: Documentos (Semi-ocultos) -->
             <div id="page2" class="page">
                 <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; color: var(--primary);">Documentação Técnica (PDF)</p>
                 <a href="pdf.pdf" class="link-card pdf-link" target="_blank">
                     <span> Relatório de Extensão ADS</span>
-                    <svg class="icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 </a>
                 <a href="reg.pdf" class="link-card pdf-link" target="_blank">
                     <span> Ficha de Frequência ADS</span>
-                    <svg class="icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 </a>
                 <a href="vinculo.pdf" class="link-card pdf-link" target="_blank">
                     <span> Vinculo Estudantil Uniasselvi</span>
-                    <svg class="icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 </a>
                 <button class="nav-btn" onclick="togglePage()">⬅ Voltar</button>
             </div>
         </div>
 
         <button onclick="window.location.replace('https://www.google.com')" class="panic-btn">
-            <svg class="icon" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg> SAÍDA RÁPIDA (ESC)
+            <svg class="icon" viewBox="0 0 24 24" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg> SAÍDA RÁPIDA (ESC)
         </button>
 
         <div class="footer">
