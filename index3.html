@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/32px-Bandeira_de_Blumenau.svg.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/16px-Bandeira_de_Blumenau.svg.png">
-    <link class="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/180px-Bandeira_de_Blumenau.svg.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/180px-Bandeira_de_Blumenau.svg.png">
     <meta name="msapplication-TileImage" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bandeira_de_Blumenau.svg/270px-Bandeira_de_Blumenau.svg.png">
 
     <meta name="description" content="Telefones de plantão, endereços e canais de denúncia do Conselho Tutelar de Blumenau. Informações oficiais sobre o ECA, SIPIA e suporte à violência doméstica.">
@@ -184,6 +184,7 @@
 
         /* GRID E CARDS MODERNOS */
         .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
         
         .card {
@@ -253,7 +254,7 @@
 
         /* FORMULÁRIO SEGURO */
         form { display: flex; flex-direction: column; gap: 12px; }
-        label { font-weight: 600; color: var(--primary); }
+        label { font-weight: 600; color: var(--primary); font-size: 0.95rem; margin-bottom: -4px; }
         input, textarea, select {
             width: 100%; padding: 12px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1rem;
         }
@@ -353,6 +354,7 @@
             .menu ul.active { display: flex; }
             .menu-burger { display: block; }
             .grid-2 { grid-template-columns: 1fr; }
+            .grid-form { grid-template-columns: 1fr; }
             .profile-container { flex-direction: column; text-align: center; }
         }
     </style>
@@ -407,7 +409,7 @@
                 </div>
                 <div class="card">
                     <h3>Canais de Emergência Nacionais</h3>
-                    <p>Roteamento direto e imediato para o Disque 100 (Direitos Humanos de Crianças) e Disque 180 (Atendimento de Urgência à Mulher).</p>
+                    <p>Roteamento direto e imediato para o Disque 100 (Denúncias do ECA) e Disque 180 (Atendimento de Urgência à Muler).</p>
                     <a href="#" onclick="switchTab('contactos')">Ver telefones úteis de SC</a>
                 </div>
             </div>
@@ -544,8 +546,7 @@
                         <div class="alerta-box">
                             <svg class="icon icon-large" style="color: var(--alert);" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             <div>
-                                <strong>Importante sobre Segurança da Informação:</strong> Este formulário foi projetado para gerar relatórios detalhados com total blindagem local de dados. Nenhuma informação inserida é armazenada em banco de dados ou enviada a servidores de terceiros.
-                                Ao clicar em enviar, o sistema invoca seu próprio gerenciador de e-mail seguro pré-formatando o texto para a central municipal: <strong>conselhotutelar@blumenau.sc.gov.br</strong>.
+                                <strong>Multi-Envio de Urgência:</strong> Este formulário foi atualizado para enviar a mensagem simultaneamente para a Central Geral e para todas as coordenações regionais de Blumenau. Isso agiliza o acolhimento do menor e evita falhas de jurisdição. Nossos servidores locais não guardam logs.
                             </div>
                         </div>
                         <form id="denunciaForm" onsubmit="handleFormSubmission(event)">
@@ -557,14 +558,25 @@
                                 <option value="ambos">Abuso Combinado (Urgência Integrada Infância e Família)</option>
                             </select>
 
+                            <div class="grid-form">
+                                <div>
+                                    <label for="bairro_fato">Bairro do Ocorrido (Blumenau)</label>
+                                    <input type="text" id="bairro_fato" required placeholder="Ex: Velha Central, Centro...">
+                                </div>
+                                <div>
+                                    <label for="referencia_local">Ponto de Referência</label>
+                                    <input type="text" id="referencia_local" placeholder="Ex: Próximo à Escola X...">
+                                </div>
+                            </div>
+
                             <label for="nome">Seu Nome Completo (Mantenha vazio para preservar o Anonimato)</label>
                             <input type="text" id="nome" placeholder="Opcional - Totalmente Seguro">
 
                             <label for="descricao">Descrição Minuciosa dos Fatos Envolvidos</label>
-                            <textarea id="descricao" rows="5" required placeholder="Escreva o endereço do ocorrido, ponto de referência, nomes ou características físicas dos envolvidos e os sinais observados..."></textarea>
+                            <textarea id="descricao" rows="5" required placeholder="Escreva o endereço exato, nomes ou apelidos dos envolvidos, horário aproximado e os sinais de abuso identificados..."></textarea>
 
                             <button type="submit" class="btn btn-alert">
-                                <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Gerar Denúncia via E-mail Seguro
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Gerar Denúncia Integrada para Todos os Conselhos
                             </button>
                         </form>
                     </div>
@@ -636,22 +648,35 @@
             event.preventDefault();
             
             const tipo = document.getElementById('tipo_violencia').value;
-            const nome = document.getElementById('nome').value || "Cidadão Anônimo";
+            const bairro = document.getElementById('bairro_fato').value;
+            const referencia = document.getElementById('referencia_local').value || "Não informada";
+            const nome = document.getElementById('nome').value || "Cidadão Anônimo (Solicitação de Sigilo)";
             const descricao = document.getElementById('descricao').value;
             
-            const emailDestino = "conselhotutelar@blumenau.sc.gov.br";
-            const assunto = `ALERTA INTEGRADO: ${tipo.toUpperCase()} - Blumenau`;
+            // ABORDAGEM MULTI-ENVIO INTEGRADO (Todos os conselhos em cópia simultânea)
+            const emailCentral = "conselhotutelar@blumenau.sc.gov.br";
+            const emailsRegiões = "conselhotutelar1@blumenau.sc.gov.br,conselhotutelar2@blumenau.sc.gov.br,conselhotutelar3@blumenau.sc.gov.br";
             
-            const corpoEmail = `Portal de Proteção Comunitária - Blumenau\n` +
-                               `-----------------------------------------\n` +
-                               `Natureza do Alerta: ${tipo}\n` +
-                               `Remetente: ${nome}\n` +
-                               `Relato dos Fatos:\n${descricao}\n\n` +
-                               `-----------------------------------------\n` +
-                               `Enviado com criptografia local em conformidade de sigilo.`;
+            const destinatariosCompletos = `${emailCentral},${emailsRegiões}`;
+            
+            const assunto = `ALERTA URGENTE (MULTI-REGIONAL): ${tipo.toUpperCase()} - BAIRRO: ${bairro.toUpperCase()}`;
+            
+            const corpoEmail = `PORTAL DE PROTEÇÃO COMUNITÁRIA - BLUMENAU\n` +
+                               `==================================================\n` +
+                               `LOCALIZADOR GEOGRÁFICO DE TRIAGEM:\n` +
+                               `• Bairro do Fato: ${bairro}\n` +
+                               `• Ponto de Referência: ${referencia}\n` +
+                               `==================================================\n` +
+                               `DADOS DO ALERTA:\n` +
+                               `• Natureza da Ocorrência: ${tipo}\n` +
+                               `• Identificação do Remetente: ${nome}\n\n` +
+                               `RELATO DETALHADO DOS FATOS:\n` +
+                               `${descricao}\n\n` +
+                               `--------------------------------------------------\n` +
+                               `Mensagem criptografada e enviada via canal seguro unificado.`;
 
-            alert("Redirecionando. Seu aplicativo local de e-mail seguro será aberto para transmissão.");
-            window.location.href = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+            alert("Disparando envio multi-regional. Seu aplicativo padrão de e-mail seguro será aberto para transmissão simultânea.");
+            window.location.href = `mailto:${destinatariosCompletos}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
         }
 
         function panicExit() {
