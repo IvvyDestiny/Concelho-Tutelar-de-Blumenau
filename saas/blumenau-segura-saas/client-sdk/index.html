@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blumenau Segura - Portal de Ajuda</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Portal de Triagem Segura</h1>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="relato">Fazer Relato</button>
+            <button class="tab-btn" data-tab="status">Verificar Status</button>
+        </div>
+
+        <div id="relato" class="tab-content active">
+            <form id="triagem-form">
+                <textarea id="descricao" placeholder="Descreva o ocorrido com o máximo de detalhes possível..." required></textarea>
+                <button type="submit">Enviar para Análise</button>
+            </form>
+            <div id="resultado"></div>
+        </div>
+
+        <div id="status" class="tab-content">
+            <p>Consulte o status do seu relato pelo protocolo.</p>
+            <input type="text" id="protocolo" placeholder="Número do protocolo">
+            <button id="btn-consultar">Consultar</button>
+        </div>
+    </div>
+
+    <script src="js/triagem-sdk.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
