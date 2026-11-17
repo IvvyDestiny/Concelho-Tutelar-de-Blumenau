@@ -646,37 +646,14 @@
 
         function handleFormSubmission(event) {
             event.preventDefault();
-            
-            const tipo = document.getElementById('tipo_violencia').value;
-            const bairro = document.getElementById('bairro_fato').value;
-            const referencia = document.getElementById('referencia_local').value || "Não informada";
-            const nome = document.getElementById('nome').value || "Cidadão Anônimo (Solicitação de Sigilo)";
-            const descricao = document.getElementById('descricao').value;
-            
-            // ABORDAGEM MULTI-ENVIO INTEGRADO (Todos os conselhos em cópia simultânea)
+
+            if (!window.confirm("Este portal não envia nem criptografa denúncias. Para sua proteção, não informe dados pessoais ou sensíveis por e-mail. Deseja abrir uma mensagem em branco para contato geral?")) return;
+
             const emailCentral = "conselhotutelar@blumenau.sc.gov.br";
             const emailsRegiões = "conselhotutelar1@blumenau.sc.gov.br,conselhotutelar2@blumenau.sc.gov.br,conselhotutelar3@blumenau.sc.gov.br";
-            
             const destinatariosCompletos = `${emailCentral},${emailsRegiões}`;
-            
-            const assunto = `ALERTA URGENTE (MULTI-REGIONAL): ${tipo.toUpperCase()} - BAIRRO: ${bairro.toUpperCase()}`;
-            
-            const corpoEmail = `PORTAL DE PROTEÇÃO COMUNITÁRIA - BLUMENAU\n` +
-                               `==================================================\n` +
-                               `LOCALIZADOR GEOGRÁFICO DE TRIAGEM:\n` +
-                               `• Bairro do Fato: ${bairro}\n` +
-                               `• Ponto de Referência: ${referencia}\n` +
-                               `==================================================\n` +
-                               `DADOS DO ALERTA:\n` +
-                               `• Natureza da Ocorrência: ${tipo}\n` +
-                               `• Identificação do Remetente: ${nome}\n\n` +
-                               `RELATO DETALHADO DOS FATOS:\n` +
-                               `${descricao}\n\n` +
-                               `--------------------------------------------------\n` +
-                               `Mensagem criptografada e enviada via canal seguro unificado.`;
-
-            alert("Disparando envio multi-regional. Seu aplicativo padrão de e-mail seguro será aberto para transmissão simultânea.");
-            window.location.href = `mailto:${destinatariosCompletos}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpoEmail)}`;
+            event.currentTarget.reset();
+            window.location.href = `mailto:${destinatariosCompletos}?subject=${encodeURIComponent("Contato com o Conselho Tutelar de Blumenau")}`;
         }
 
         function panicExit() {

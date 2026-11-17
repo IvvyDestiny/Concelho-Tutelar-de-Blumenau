@@ -15,6 +15,25 @@ const trackedPages = new Set([
   '/docs/index-old.html',
   '/docs/index3.html'
 ]);
+const publicFiles = new Set([
+  '/index.html',
+  '/lk.html',
+  '/ap.html',
+  '/apresentacao.html',
+  '/ext.html',
+  '/dashboard.html',
+  '/docs/index-old.html',
+  '/docs/index3.html',
+  '/img.jpeg',
+  '/pdf.pdf',
+  '/reg.pdf',
+  '/vinculo.pdf'
+]);
+const servePublicFile = express.static(__dirname, {
+  dotfiles: 'deny',
+  fallthrough: true,
+  index: false
+});
 let totalAccesses = 0;
 const startedAt = Date.now();
 
@@ -74,8 +93,10 @@ app.get('/api/stats', (req, res) => {
   });
 });
 
-// Serve os arquivos estáticos (HTML, CSS, JS) a partir da pasta atual
-app.use(express.static(__dirname));
+app.use((req, res, next) => {
+  if (!publicFiles.has(req.path)) return next();
+  servePublicFile(req, res, next);
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
