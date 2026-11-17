@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cola Interativa • Portal de Proteção Comunitária</title>
+    <style>
+        :root {
+            --bg: #0F172A;
+            --card: #1E293B;
+            --primary: #38BDF8;
+            --accent: #4ADE80;
+            --danger: #F87171;
+            --text: #F8FAFC;
+            --muted: #94A3B8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            cursor: pointer; /* Indica que a tela toda é clicável */
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 6px;
+            width: 20%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 18px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--muted);
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        .badge-step {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .deck {
+            position: fixed;
+            inset: 0;
+            display: flex;
+        }
+
+        .card {
+            position: absolute;
+            inset: 0;
+            padding: 70px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+        }
+
+        .card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .card-inner {
+            margin: auto;
+            width: 100%;
+            max-width: 760px;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(24px, 5vw, 44px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .kicker {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .highlight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .highlight-box strong { color: var(--primary); }
+        .highlight-box.danger {
+            background: rgba(248, 113, 113, 0.1);
+            border-left-color: var(--danger);
+        }
+        .highlight-box.danger strong { color: var(--danger); }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        li {
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+            line-height: 1.45;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        li strong { color: var(--primary); }
+
+        .tech-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .tech-row {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 14px 18px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tech-row span:first-child {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .tech-row span:last-child {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .bottom-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+        }
+
+        .btn-back {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-back:hover { background: #334155; }
+
+        .tap-hint {
+            font-size: 0.9rem;
+            color: var(--muted);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+
+    <header class="top-bar">
+        <span>Cola de Apresentação</span>
+        <span class="badge-step" id="stepCounter">1 / 5</span>
+    </header>
+
+    <main class="deck" id="deck">
+        <!-- Parte 1 -->
+        <section class="card active">
+            <div class="card-inner">
+                <div class="kicker">Slide 1 • Abertura</div>
+                <h1>Portal Unificado de Proteção Comunitária</h1>
+                <div class="highlight-box">
+                    <strong>Falar:</strong> Tecnologia a serviço da cidadania e proteção de direitos em <strong>Blumenau/SC</strong>.
+                </div>
+                <ul>
+                    <li>Projeto desenvolvido por <strong>Ivan Montibeller</strong> (ADS).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Parte 2 -->
+        <section class="card">
+            <div class="card-inner">
+                <div class="kicker">Slide 2 • O Problema</div>
+                <h1>Por que criar o portal?</h1>
+                <div class="highlight-box">
+                    <strong>Dor:</strong> Informações espalhadas atrasam o socorro em momentos críticos.
+                </div>
+                <ul>
+                    <li><strong>Informação:</strong> Leis e guias reunidos (ECA e SIPIA).</li>
+                    <li><strong>Acesso:</strong> Contato direto com as <strong>3 regiões</strong> de Blumenau.</li>
+                    <li><strong>Urgência:</strong> Atalhos rápidos para denúncias.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Parte 3 -->
+        <section class="card">
+            <div class="card-inner">
+                <div class="kicker">Slide 3 • Diferencial</div>
+                <h1>Panic Exit (Saída Rápida)</h1>
+                <div class="highlight-box danger">
+                    <strong>Proteção:</strong> Para vítimas em ambientes monitorados.
+                </div>
+                <ul>
+                    <li>Um clique no botão vermelho ou tecla <strong>ESC</strong>.</li>
+                    <li>Fecha o portal e abre o <strong>Google na hora</strong>, ocultando o acesso.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Parte 4 -->
+        <section class="card">
+            <div class="card-inner">
+                <div class="kicker">Slide 4 • Arquitetura Técnica</div>
+                <h1>Como foi construído (ADS)</h1>
+                <div class="tech-list">
+                    <div class="tech-row">
+                        <span>Node.js + Express</span>
+                        <span>Back-end leve e roteamento rápido.</span>
+                    </div>
+                    <div class="tech-row">
+                        <span>Render + GitHub (CI/CD)</span>
+                        <span>Deploy automático em nuvem e baixo custo.</span>
+                    </div>
+                    <div class="tech-row">
+                        <span>Design Responsivo</span>
+                        <span>Funciona bem em qualquer celular ou PC.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parte 5 -->
+        <section class="card">
+            <div class="card-inner">
+                <div class="kicker">Slide 5 • Encerramento</div>
+                <h1>Impacto Social</h1>
+                <div class="highlight-box">
+                    <strong>Fechamento:</strong> Mais que um site, é uma ferramenta de <strong>intervenção social</strong> para salvar vidas por meio da informação.
+                </div>
+                <ul>
+                    <li>Agradecer à banca / público.</li>
+                    <li>Contato: <strong>ivan.m301299@outlook.com</strong></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bottom-controls">
+        <button type="button" class="btn-back" id="prevBtn">⬅ Voltar</button>
+        <span class="tap-hint" id="tapHint">Toque na tela para avançar ➡</span>
+    </footer>
+
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const progress = document.getElementById('progress');
+        const stepCounter = document.getElementById('stepCounter');
+        const tapHint = document.getElementById('tapHint');
+        const prevBtn = document.getElementById('prevBtn');
+        let current = 0;
+
+        function showCard(index) {
+            cards[current].classList.remove('active');
+            current = (index + cards.length) % cards.length;
+            cards[current].classList.add('active');
+            cards[current].scrollTop = 0;
+
+            const step = current + 1;
+            progress.style.width = `${(step / cards.length) * 100}%`;
+            stepCounter.textContent = `${step} / ${cards.length}`;
+            tapHint.textContent = step === cards.length ? 'Fim (toque para reiniciar) ↻' : 'Toque na tela para avançar ➡';
+        }
+
+        // Clique em qualquer lugar da tela avança (exceto no botão Voltar)
+        document.body.addEventListener('click', (e) => {
+            if (e.target.closest('#prevBtn')) return;
+            showCard(current + 1);
+        });
+
+        prevBtn.addEventListener('click', () => showCard(current - 1));
+
+        // Suporte a teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                showCard(current + 1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                showCard(current - 1);
+            }
+        });
+    </script>
+</body>
+</html>
