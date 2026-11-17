@@ -196,7 +196,7 @@
             </div>
         </div>
 
-        <button onclick="window.location.replace('https://www.google.com/search?q=PREVIS%C3%83O+DO+TEMPO')" class="panic-btn">
+        <button onclick="panicExit()" class="panic-btn">
             <svg class="icon" viewBox="0 0 24 24" style="width:16px; height:16px;"><path d="M18 6 6 18M6 6l12 12"/></svg> SAÍDA RÁPIDA (ESC)
         </button>
 
@@ -213,7 +213,11 @@
             p2.classList.toggle('active');
         }
 
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') window.location.replace("https://www.google.com"); });
+        function panicExit() {
+            window.location.replace('https://www.google.com/search?q=previs%C3%A3o+do+tempo');
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') panicExit(); });
     </script>
 </body>
 </html>

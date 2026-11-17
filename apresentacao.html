@@ -381,7 +381,7 @@
         document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
 
         document.getElementById('demoPanicBtn').addEventListener('click', () => {
-            alert('Isso redirecionaria instantaneamente para o Google, ocultando a atividade do usuário.');
+            window.location.replace('https://www.google.com/search?q=previs%C3%A3o+do+tempo');
         });
 
         document.addEventListener('keydown', (e) => {
@@ -392,7 +392,7 @@
                 e.preventDefault();
                 goToSlide(currentSlide - 1);
             } else if (e.key === 'Escape') {
-                window.location.replace('https://www.google.com');
+                window.location.replace('https://www.google.com/search?q=previs%C3%A3o+do+tempo');
             }
         });
 
