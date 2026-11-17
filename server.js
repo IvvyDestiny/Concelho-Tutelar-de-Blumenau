@@ -7,6 +7,7 @@ const dailyAccesses = new Map();
 const pageAccesses = new Map();
 const trackedPages = new Set([
   '/',
+  '/lk',
   '/index.html',
   '/lk.html',
   '/ap.html',
@@ -42,7 +43,7 @@ app.use((req, res, next) => {
 
   if (isPageRequest) {
     const today = new Date().toISOString().slice(0, 10);
-    const page = req.path === '/' ? '/index.html' : req.path;
+    const page = req.path === '/' ? '/index.html' : req.path === '/lk' ? '/lk.html' : req.path;
 
     totalAccesses += 1;
     dailyAccesses.set(today, (dailyAccesses.get(today) || 0) + 1);
@@ -57,6 +58,19 @@ app.use((req, res, next) => {
   }
 
   next();
+});
+
+app.get('/lk', (req, res) => {
+  res.sendFile(path.join(__dirname, 'lk.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard.html'));
+});
+
+app.get('/api/health', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.json({ status: 'ok' });
 });
 
 app.get('/api/stats', (req, res) => {
