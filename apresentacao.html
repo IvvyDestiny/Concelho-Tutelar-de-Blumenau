@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apresentação do Portal Unificado de Proteção Comunitária de Blumenau/SC.">
     <title>Apresentação: Portal de Proteção Comunitária - Blumenau</title>
     <style>
         :root {
@@ -10,217 +11,401 @@
             --secondary: #2E7D32;
             --accent: #D32F2F;
             --white: #ffffff;
-            --gray: #f4f7f6;
+            --text-light: #E2E8F0;
+            --text-muted: #A0AEC0;
+            --heading-accent: #90CDF4;
+            --card-title: #63B3ED;
+            --badge-bg: #2D3748;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             background: var(--primary);
             color: var(--white);
-            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-
-        .slide-container {
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(50px);
-            text-align: center;
-        }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
-        h2 { font-size: 2.5rem; color: #90CDF4; margin-bottom: 20px; }
-        p { font-size: 1.5rem; max-width: 800px; line-height: 1.6; color: #E2E8F0; }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-            max-width: 1000px;
-        }
-
-        .feature-item {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .feature-item h3 { font-size: 1.8rem; margin-bottom: 10px; color: #63B3ED; }
-
-        .controls {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        .btn-nav {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-nav:hover { background: var(--secondary); }
 
         .progress-bar {
             position: fixed;
             top: 0; left: 0;
             height: 5px;
+            width: 20%;
             background: var(--secondary);
-            transition: 0.3s;
+            transition: width 0.35s ease;
             z-index: 1001;
+        }
+
+        .slide-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px 88px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateX(30px);
+            transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.45s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+
+        /* Centraliza verticalmente sem cortar o topo em telas baixas */
+        .slide-inner {
+            margin: auto;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 4.5vw, 3.2rem);
+            margin-bottom: 14px;
+            line-height: 1.15;
+            max-width: 850px;
+        }
+
+        h2 {
+            font-size: clamp(1.45rem, 3.2vw, 2.3rem);
+            color: var(--heading-accent);
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: clamp(1rem, 1.8vw, 1.35rem);
+            max-width: 780px;
+            line-height: 1.55;
+            color: var(--text-light);
+        }
+
+        .author-tag {
+            margin-top: clamp(24px, 5vh, 48px);
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: clamp(20px, 4vh, 36px);
+            width: 100%;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 22px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .feature-item h3 {
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+            color: var(--card-title);
+        }
+
+        .feature-item p { font-size: 1rem; }
+
+        .icon-pres {
+            width: 30px;
+            height: 30px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            margin: 0 auto 10px;
+            display: block;
+            color: var(--heading-accent);
         }
 
         .panic-demo {
             background: var(--accent);
-            padding: 20px 40px;
+            padding: 16px 32px;
             border-radius: 50px;
-            font-weight: bold;
-            margin-top: 30px;
-            animation: pulse 2s infinite;
+            font-weight: 700;
+            margin-top: 28px;
             border: none;
-            color: white;
-            font-size: 1.2rem;
+            color: var(--white);
+            font-size: 1.1rem;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+            transition: transform 0.2s ease;
         }
 
+        .panic-demo:hover, .panic-demo:focus-visible {
+            transform: scale(1.04);
+            outline: 2px solid var(--white);
+            outline-offset: 4px;
+        }
+
+        .panic-demo svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .shortcut-hint { margin-top: 18px; font-size: 0.95rem; color: var(--text-muted); }
+
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(211, 47, 47, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+            70% { box-shadow: 0 0 0 14px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+
+        .badges-wrapper {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 720px;
         }
 
         .tech-badge {
-            background: #2D3748;
-            padding: 10px 20px;
+            background: var(--badge-bg);
+            padding: 9px 18px;
             border-radius: 8px;
-            font-family: monospace;
-            margin: 5px;
-            display: inline-block;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
-        
-        .icon-pres { width: 32px; height: 32px; stroke: currentColor; stroke-width: 2; fill: none; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
+
+        .arch-note { margin-top: 24px; font-size: 1.1rem; }
+        .thanks-title { margin-top: 28px; color: #68D391; }
+
+        .controls {
+            position: fixed;
+            bottom: 16px;
+            right: 20px;
+            left: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .slide-counter {
+            background: rgba(15, 31, 56, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            pointer-events: auto;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            pointer-events: auto;
+        }
+
+        .btn-nav {
+            background: rgba(15, 31, 56, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            padding: 10px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-nav:hover, .btn-nav:focus-visible {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progress"></div>
+    <svg style="display: none;" aria-hidden="true">
+        <symbol id="icon-alert" viewBox="0 0 24 24">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </symbol>
+    </svg>
 
-    <div class="slide-container">
+    <div class="progress-bar" id="progress" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"></div>
+
+    <main class="slide-container" id="slideContainer">
         <!-- Slide 1: Capa -->
-        <div class="slide active">
-            <h1>Portal Unificado de Proteção Comunitária</h1>
-            <h2>Blumenau/SC</h2>
-            <p>Tecnologia a serviço da cidadania e salvaguarda de direitos.</p>
-            <p style="margin-top: 50px; font-size: 1.1rem; color: #A0AEC0;">Desenvolvido por: Ivan Montibeller</p>
-        </div>
+        <section class="slide active" aria-hidden="false">
+            <div class="slide-inner">
+                <h1>Portal Unificado de Proteção Comunitária</h1>
+                <h2>Blumenau/SC</h2>
+                <p>Tecnologia a serviço da cidadania e salvaguarda de direitos.</p>
+                <p class="author-tag">Desenvolvido por: Ivan Montibeller</p>
+            </div>
+        </section>
 
         <!-- Slide 2: O Desafio -->
-        <div class="slide">
-            <h2>O Problema</h2>
-            <p>A dispersão de informações críticas em momentos de urgência. Dificuldade no acesso direto aos órgãos de proteção (Conselho Tutelar, Delegacias e Redes de Apoio).</p>
-            <div class="feature-grid">
-                <div class="feature-item"><svg class="icon-pres"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><h3>Informação</h3><p>Centralização do ECA e SIPIA</p></div>
-                <div class="feature-item"><svg class="icon-pres"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3>Acesso</h3><p>Conexão direta com as 3 regiões de Blumenau</p></div>
-                <div class="feature-item"><svg class="icon-pres"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg><h3>Urgência</h3><p>Canais de denúncia rápidos</p></div>
+        <section class="slide" aria-hidden="true">
+            <div class="slide-inner">
+                <h2>O Problema</h2>
+                <p>A dispersão de informações críticas em momentos de urgência e a dificuldade no acesso direto aos órgãos de proteção (Conselho Tutelar, Delegacias e Redes de Apoio).</p>
+                <div class="feature-grid">
+                    <article class="feature-item">
+                        <svg class="icon-pres" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                        <h3>Informação</h3>
+                        <p>Centralização do ECA e SIPIA</p>
+                    </article>
+                    <article class="feature-item">
+                        <svg class="icon-pres" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <h3>Acesso</h3>
+                        <p>Conexão direta com as 3 regiões de Blumenau</p>
+                    </article>
+                    <article class="feature-item">
+                        <svg class="icon-pres" aria-hidden="true"><use href="#icon-alert"/></svg>
+                        <h3>Urgência</h3>
+                        <p>Canais de denúncia rápidos</p>
+                    </article>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Slide 3: Inovação e Segurança -->
-        <div class="slide">
-            <h2>Segurança Centrada no Usuário</h2>
-            <p>Implementação do protocolo "Panic Exit" (Saída Rápida). Essencial para vítimas de violência doméstica em ambientes de monitoramento.</p>
-            <button class="panic-demo" onclick="alert('Isso redirecionaria instantaneamente para o Google Clima, ocultando a atividade do usuário.')"><svg class="icon" style="width:24px; height:24px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg> Simular Saída Rápida</button>
-            <p style="margin-top: 20px; font-size: 1rem;">Atalho global: Tecla ESC</p>
-        </div>
+        <section class="slide" aria-hidden="true">
+            <div class="slide-inner">
+                <h2>Segurança Centrada no Usuário</h2>
+                <p>Implementação do protocolo "Panic Exit" (Saída Rápida), essencial para vítimas de violência doméstica em ambientes de monitoramento.</p>
+                <button type="button" class="panic-demo" id="demoPanicBtn">
+                    <svg aria-hidden="true"><use href="#icon-alert"/></svg>
+                    Simular Saída Rápida
+                </button>
+                <p class="shortcut-hint">Atalho global: Tecla ESC</p>
+            </div>
+        </section>
 
         <!-- Slide 4: Arquitetura Técnica -->
-        <div class="slide">
-            <h2>Análise e Desenvolvimento de Sistemas</h2>
-            <p>Solução robusta, escalável e de baixo custo de manutenção.</p>
-            <div style="margin-top: 30px;">
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Express Engine</span>
-                <span class="tech-badge">Render Cloud</span>
-                <span class="tech-badge">CI/CD Automático</span>
-                <span class="tech-badge">Design Responsivo</span>
+        <section class="slide" aria-hidden="true">
+            <div class="slide-inner">
+                <h2>Análise e Desenvolvimento de Sistemas</h2>
+                <p>Solução robusta, escalável e de baixo custo de manutenção.</p>
+                <div class="badges-wrapper">
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">Express Engine</span>
+                    <span class="tech-badge">Render Cloud</span>
+                    <span class="tech-badge">CI/CD Automático</span>
+                    <span class="tech-badge">Design Responsivo</span>
+                </div>
+                <p class="arch-note">Arquitetura Serverless integrada ao GitHub.</p>
             </div>
-            <p style="margin-top: 30px; font-size: 1.2rem;">Arquitetura Serverless integrada ao GitHub.</p>
-        </div>
+        </section>
 
         <!-- Slide 5: Conclusão -->
-        <div class="slide">
-            <h2>Impacto Social</h2>
-            <p>"Não é apenas um site, é uma ferramenta de intervenção social. Blumenau ganha um hub de proteção moderno, acessível e preparado para salvar vidas através da informação."</p>
-            <h1 style="margin-top: 40px; color: var(--secondary);">Obrigado!</h1>
-            <p>ivan.m301299@outlook.com</p>
-        </div>
-    </div>
+        <section class="slide" aria-hidden="true">
+            <div class="slide-inner">
+                <h2>Impacto Social</h2>
+                <p>"Não é apenas um site, é uma ferramenta de intervenção social. Blumenau ganha um hub de proteção moderno, acessível e preparado para salvar vidas através da informação."</p>
+                <h1 class="thanks-title">Obrigado!</h1>
+                <p>ivan.m301299@outlook.com</p>
+            </div>
+        </section>
+    </main>
 
-    <div class="controls">
-        <button class="btn-nav" onclick="changeSlide(-1)">⬅ Anterior</button>
-        <button class="btn-nav" onclick="changeSlide(1)">Próximo ➡</button>
-    </div>
+    <nav class="controls" aria-label="Navegação de slides">
+        <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 5</span>
+        <div class="nav-buttons">
+            <button type="button" class="btn-nav" id="prevBtn" aria-label="Slide anterior">⬅ Anterior</button>
+            <button type="button" class="btn-nav" id="nextBtn" aria-label="Próximo slide">Próximo ➡</button>
+        </div>
+    </nav>
 
     <script>
-        let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const progress = document.getElementById('progress');
+        const counter = document.getElementById('slideCounter');
+        let currentSlide = 0;
+        let touchStartX = 0;
 
-        function updateProgress() {
-            const percent = ((currentSlide + 1) / slides.length) * 100;
-            progress.style.width = percent + '%';
-        }
-
-        function changeSlide(direction) {
+        function goToSlide(index) {
             slides[currentSlide].classList.remove('active');
-            currentSlide += direction;
+            slides[currentSlide].setAttribute('aria-hidden', 'true');
 
-            if (currentSlide >= slides.length) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
+            currentSlide = (index + slides.length) % slides.length;
 
             slides[currentSlide].classList.add('active');
-            updateProgress();
+            slides[currentSlide].setAttribute('aria-hidden', 'false');
+            slides[currentSlide].scrollTop = 0;
+
+            const currentNumber = currentSlide + 1;
+            const percent = (currentNumber / slides.length) * 100;
+            progress.style.width = `${percent}%`;
+            progress.setAttribute('aria-valuenow', currentNumber);
+            counter.textContent = `${currentNumber} / ${slides.length}`;
         }
 
+        document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+        document.getElementById('demoPanicBtn').addEventListener('click', () => {
+            alert('Isso redirecionaria instantaneamente para o Google, ocultando a atividade do usuário.');
+        });
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1);
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'Escape') {
-                window.location.replace("https://www.google.com");
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                goToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                goToSlide(currentSlide - 1);
+            } else if (e.key === 'Escape') {
+                window.location.replace('https://www.google.com');
             }
         });
 
-        updateProgress();
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
